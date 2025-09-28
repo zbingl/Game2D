@@ -28,6 +28,7 @@ public class Player extends Entity {
         y = 100;
         speed = 4;
         direction = "down";
+        moving = false;
     }
 
     public void getPlayerImage() {
@@ -47,21 +48,38 @@ public class Player extends Entity {
     }
 
     public void update() {
-        if (keyH.upPressed) {
+
+        if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
+            moving = true;
+
+            if (keyH.upPressed) {
             direction = "up";
             y -= speed;
-        }
-        if (keyH.downPressed) {
-            direction = "down";
-            y += speed;
-        }
-        if (keyH.leftPressed) {
-            direction = "left";
-            x -= speed;
-        }
-        if (keyH.rightPressed) {
-            direction = "right";
-            x += speed;
+            }
+            if (keyH.downPressed) {
+                direction = "down";
+                y += speed;
+            }
+            if (keyH.leftPressed) {
+                direction = "left";
+                x -= speed;
+            }
+            if (keyH.rightPressed) {
+                direction = "right";
+                x += speed;
+            }
+
+            spriteCounter ++;
+            if (spriteCounter > 12) {
+                if(spriteNum == 1) {
+                    spriteNum = 2;
+                } else if(spriteNum == 2) {
+                    spriteNum = 1;
+                }
+                spriteCounter = 0;
+            }
+        } else {
+            moving = false;
         }
     }
 
@@ -70,16 +88,36 @@ public class Player extends Entity {
 
         switch (direction) {
             case "up":
-                image = up1;
+                if (spriteNum == 2 && moving) {
+                    image = up2;
+                    
+                } else {
+                    image = up1;
+                }
                 break;
             case "down":
-                image = down1;
+                if (spriteNum == 2 && moving) {
+                    image = down2;
+                    
+                } else {
+                    image = down1;
+                }
                 break;
             case "left":
-                image = left1;
+                if (spriteNum == 2 && moving) {
+                    image = left2;
+                    
+                } else {
+                    image = left1;
+                }
                 break;
             case "right":
-                image = right1;
+                if (spriteNum == 2 && moving) {
+                    image = right2;
+                    
+                } else {
+                    image = right1;
+                }
                 break;
             default:
                 break;
