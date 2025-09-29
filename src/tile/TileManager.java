@@ -57,19 +57,27 @@ public class TileManager {
             int col = 0;
             int row = 0;
 
+            System.out.println(gp.maxWorldCol);
+            System.out.println(gp.maxWorldRow);
+
             while ( col < gp.maxWorldCol && row < gp.maxWorldRow) {
                 String line = br.readLine();
+                System.out.println(row);
+                System.out.println(col);
 
-                while (col < gp.maxScreenCol) {
+                while (col < gp.maxWorldCol) {
+                    
                     String numbers[] = line.split(" ");
 
                     int num = Integer.parseInt(numbers[col]);
 
                     mapTileNum[col][row] = num;
                     col++;
+                    System.out.println(col);
                 }
+                System.out.println("exited");
 
-                if (col == gp.maxScreenCol) {
+                if (col == gp.maxWorldCol) {
                     col = 0;
                     row ++;
                 }
