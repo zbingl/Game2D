@@ -47,7 +47,7 @@ public class TileManager {
             tile[5].image = ImageIO.read(getClass().getResource("/res/tiles/earth.png"));
 
             tile[6] = new Tile();
-            tile[6].image = ImageIO.read(getClass().getResource("/res/objects/CasetteComputer.png"));
+            tile[6].image = ImageIO.read(getClass().getResource("/res/object/CasetteComputer.png"));
 
             
         } catch (IOException e) {
@@ -111,7 +111,13 @@ public class TileManager {
                 worldX < gp.player.worldX + gp.player.screenX + gp.tileSize &&
                 worldY > gp.player.worldY - gp.player.screenY - gp.tileSize &&
                 worldY < gp.player.worldY + gp.player.screenY + gp.tileSize) {
-                    g2.drawImage(tile[TileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+                    // Testing, remove if statement when done
+                    //g2.drawImage(tile[TileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+                    if (TileNum == 6) {
+                        g2.drawImage(tile[TileNum].image, screenX, screenY, gp.tileSize * 4, gp.tileSize * 3, null);
+                    } else {
+                        g2.drawImage(tile[TileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+                    }
 
                }
 
