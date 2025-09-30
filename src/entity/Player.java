@@ -1,6 +1,7 @@
 package entity;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -22,6 +23,10 @@ public class Player extends Entity {
 
         screenX = gp.screenWidth/2 -gp.tileSize/2;
         screenY = gp.screenHeight/2 - gp.tileSize/2;
+
+        solidArea = new Rectangle(8, 16, 32, 32);
+
+
 
         setDefaultValues();
         getPlayerImage();
@@ -61,27 +66,42 @@ public class Player extends Entity {
                 sprinting = true;
             }
 
-            int speedBonus = sprinting ? 1 : 0;
+            speedBonus = sprinting ? speed : 0;
+
+            collisionOn = false;
+            
 
             if (keyH.upPressed) {
                 direction = "up";
-                worldY -= speed + speedBonus * speed;
+                gp.cc.checkTile(this);
+                worldY -= !collisionOn ? speed + speedBonus : 0;
+                collisionOn = false;
             }
             if (keyH.downPressed) {
                 direction = "down";
-                worldY += speed + speedBonus * speed;
+                gp.cc.checkTile(this);
+                worldY += !collisionOn ? speed + speedBonus : 0;
+                collisionOn = false;
             }
             if (keyH.leftPressed) {
                 direction = "left";
-                worldX -= speed + speedBonus * speed;
+                gp.cc.checkTile(this);
+                worldX -= !collisionOn ? speed + speedBonus : 0;
+                collisionOn = false;
             }
             if (keyH.rightPressed) {
                 direction = "right";
-                worldX += speed + speedBonus * speed;
+                gp.cc.checkTile(this);
+                worldX += !collisionOn ? speed + speedBonus : 0;
+                collisionOn = false;
             }
 
+            
+
+
+
             spriteCounter ++;
-            if (spriteCounter > 12 - (speedBonus * 12)/2) {
+            if (spriteCounter > 12 - (speedBonus * 3)/2) {
                 if(spriteNum == 1) {
                     spriteNum = 2;
                 } else if(spriteNum == 2) {

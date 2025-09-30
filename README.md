@@ -9,5 +9,5 @@ Pixelart: [piskel.com](https://www.piskelapp.com/)
 move maxWorldRow and maxWorldCol to TileManager, set to appropriate values after loading map file in constructor
 HUD
 interaction
-collision
+~~collision~~
 new textures
