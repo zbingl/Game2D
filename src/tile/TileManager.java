@@ -40,7 +40,7 @@ public class TileManager {
             tile[3].image = ImageIO.read(getClass().getResource("/res/tiles/hut.png"));
 
             tile[4] = new Tile();
-            tile[4].image = ImageIO.read(getClass().getResource("/res/tiles/mytree.png"));
+            tile[4].image = ImageIO.read(getClass().getResource("/res/tiles/bush.png"));
             tile[4].collision = true;
 
             tile[5] = new Tile();
@@ -61,24 +61,25 @@ public class TileManager {
             int row = 0;
 
             System.out.println(gp.maxWorldCol);
-            System.out.println(gp.maxWorldRow);
 
             while ( col < gp.maxWorldCol && row < gp.maxWorldRow) {
                 String line = br.readLine();
-                System.out.println(row);
-                System.out.println(col);
+
 
                 while (col < gp.maxWorldCol) {
                     
                     String numbers[] = line.split(" ");
 
-                    int num = Integer.parseInt(numbers[col]);
+                    int num;
+                    try {
+                        num = Integer.parseInt(numbers[col]);
+                    } catch (Exception e) {
+                        num = 4;
+                    }
 
                     mapTileNum[col][row] = num;
                     col++;
-                    System.out.println(col);
                 }
-                System.out.println("exited");
 
                 if (col == gp.maxWorldCol) {
                     col = 0;
