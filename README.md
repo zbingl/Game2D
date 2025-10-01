@@ -7,6 +7,7 @@ Map editor : [Tiled](https://www.mapeditor.org/)
 
 ![alt text](src/res/objects/CasetteComputer.png)
 ![alt text](src/res/player/down_still.png)
+![alt text](PixelArtWIP/bush.png)
 
 ## TODO
 move maxWorldRow and maxWorldCol to TileManager, set to appropriate values after loading map file in constructor\
