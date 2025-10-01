@@ -35,6 +35,8 @@ public class Player extends Entity {
     public void setDefaultValues() {
         worldX = gp.tileSize * 23;
         worldY = gp.tileSize * 21;
+        dimX = 1;
+        dimY = 2;
         speed = 4;
         direction = "down";
         moving = false;
@@ -45,8 +47,9 @@ public class Player extends Entity {
         try {
             up1 = ImageIO.read(getClass().getResourceAsStream("/res/player/boy_up_1.png"));
             up2 = ImageIO.read(getClass().getResourceAsStream("/res/player/boy_up_2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/res/player/boy_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/res/player/boy_down_2.png"));
+            down0 = ImageIO.read(getClass().getResourceAsStream("/res/player/down_still.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/res/player/down_step1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/res/player/down_step2.png"));
             left1 = ImageIO.read(getClass().getResourceAsStream("/res/player/boy_left_1.png"));
             left2 = ImageIO.read(getClass().getResourceAsStream("/res/player/boy_left_2.png"));
             right1 = ImageIO.read(getClass().getResourceAsStream("/res/player/boy_right_1.png"));
@@ -102,11 +105,9 @@ public class Player extends Entity {
 
             spriteCounter ++;
             if (spriteCounter > 12 - (speedBonus * 3)/2) {
-                if(spriteNum == 1) {
-                    spriteNum = 2;
-                } else if(spriteNum == 2) {
-                    spriteNum = 1;
-                }
+                spriteNum++;
+                if(spriteNum == 5) {
+                    spriteNum = 1;}
                 spriteCounter = 0;
             }
         } else {
@@ -127,11 +128,16 @@ public class Player extends Entity {
                 }
                 break;
             case "down":
-                if (spriteNum == 2 && moving) {
-                    image = down2;
-                    
+                if (moving) {
+                    switch (spriteNum) {
+                        case 1: image = down1; break;
+                        case 2: image = down0; break;
+                        case 3: image = down2; break;
+                        case 4: image = down0; break;
+                        
+                    }
                 } else {
-                    image = down1;
+                    image = down0;
                 }
                 break;
             case "left":
@@ -154,7 +160,12 @@ public class Player extends Entity {
                 break;
         }
 
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, 
+        screenX - gp.tileSize * (dimX - 1), 
+        screenY - gp.tileSize * (dimY - 1), 
+        gp.tileSize * dimX, 
+        gp.tileSize * dimY, 
+        null);
     }
     
 }

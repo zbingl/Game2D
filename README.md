@@ -6,12 +6,15 @@ Map editor : [Tiled](https://www.mapeditor.org/)
 
 
 ![alt text](src/res/object/CasetteComputer.png)
+![alt text](src/res/player/down_still.png)
 
 ## TODO
 move maxWorldRow and maxWorldCol to TileManager, set to appropriate values after loading map file in constructor\
 Implement JSON map files for Tiled compatibility\
 HUD\
-interaction\
-objects\
+~~objects~~\
 ~~collision~~\
-new textures
+object collision\
+object interaction
+finish player sprites
+new textures and tiles
