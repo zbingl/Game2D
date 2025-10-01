@@ -5,7 +5,7 @@ Pixelart: [piskel.com](https://www.piskelapp.com/)\
 Map editor : [Tiled](https://www.mapeditor.org/)
 
 
-![alt text](src/res/object/CasetteComputer.png)
+![alt text](src/res/objects/CasetteComputer.png)
 ![alt text](src/res/player/down_still.png)
 
 ## TODO
