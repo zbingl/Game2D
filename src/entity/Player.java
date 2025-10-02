@@ -33,8 +33,8 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-        worldX = gp.tileSize * 23;
-        worldY = gp.tileSize * 21;
+        worldX = gp.tileSize * 2;
+        worldY = gp.tileSize * 2;
         dimX = 1;
         dimY = 2;
         speed = 4;
@@ -45,15 +45,16 @@ public class Player extends Entity {
 
     public void getPlayerImage() {
         try {
-            up1 = ImageIO.read(getClass().getResourceAsStream("/res/player/boy_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/res/player/boy_up_2.png"));
-            down0 = ImageIO.read(getClass().getResourceAsStream("/res/player/down_still.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/res/player/down_step1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/res/player/down_step2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/res/player/left_still.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/res/player/left_still.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/res/player/right_still.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/res/player/right_still.png"));
+            up0 = ImageIO.read(getClass().getResourceAsStream("/res/player/up0.png"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/res/player/up1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/res/player/up2.png"));
+            down0 = ImageIO.read(getClass().getResourceAsStream("/res/player/down0.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/res/player/down1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/res/player/down2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/res/player/left0.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/res/player/left1.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/res/player/right0.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/res/player/right1.png"));
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -120,11 +121,16 @@ public class Player extends Entity {
 
         switch (direction) {
             case "up":
-                if (spriteNum == 2 && moving) {
-                    image = up2;
-                    
+                if (moving) {
+                    switch (spriteNum) {
+                        case 1: image = up1; break;
+                        case 2: image = up0; break;
+                        case 3: image = up2; break;
+                        case 4: image = up0; break;
+                        
+                    }
                 } else {
-                    image = up1;
+                    image = up0;
                 }
                 break;
             case "down":
@@ -141,17 +147,27 @@ public class Player extends Entity {
                 }
                 break;
             case "left":
-                if (spriteNum == 2 && moving) {
-                    image = left2;
-                    
+                if (moving) {
+                    switch (spriteNum) {
+                        case 1: image = left1; break;
+                        case 2: image = left2; break;
+                        case 3: image = left1; break;
+                        case 4: image = left2; break;
+                        
+                    }
                 } else {
                     image = left1;
                 }
                 break;
             case "right":
-                if (spriteNum == 2 && moving) {
-                    image = right2;
-                    
+                if (moving) {
+                    switch (spriteNum) {
+                        case 1: image = right1; break;
+                        case 2: image = right2; break;
+                        case 3: image = right1; break;
+                        case 4: image = right2; break;
+                        
+                    }
                 } else {
                     image = right1;
                 }

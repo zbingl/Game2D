@@ -12,11 +12,11 @@ public class AssetSetter {
 
     public void setObject() {
         gp.obj[0] = new OBJ_CardBoardBox();
-        gp.obj[0].worldX = 22 * gp.tileSize;
-        gp.obj[0].worldY = 7 * gp.tileSize;
+        gp.obj[0].worldX = 6 * gp.tileSize;
+        gp.obj[0].worldY = 3 * gp.tileSize;
 
         gp.obj[1] = new OBJ_CasetteComputer();
-        gp.obj[1].worldX = 34 * gp.tileSize;
-        gp.obj[1].worldY = 7 * gp.tileSize;
+        gp.obj[1].worldX = 7 * gp.tileSize;
+        gp.obj[1].worldY = 1 * gp.tileSize;
     }
 }
