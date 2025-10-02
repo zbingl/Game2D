@@ -1,12 +1,91 @@
 package main;
 
+import java.awt.Rectangle;
+
 import entity.Entity;
+import object.SuperObject;
 
 public class CollisionChecker {
     GamePanel gp;
 
     public CollisionChecker(GamePanel gp) {
         this.gp = gp;
+    }
+
+    public int checkObject(Entity e, boolean player) {
+        int index = 999;
+
+        for (int i = 0; i < gp.obj.length; i++) {
+            if (gp.obj[i] != null) {
+
+                SuperObject o = gp.obj[i];
+
+                int eSolidAreaX = e.worldX + e.solidArea.x;
+                int eSolidAreaY = e.worldY + e.solidArea.y;
+
+                Rectangle eSolidArea = new Rectangle(
+                    eSolidAreaX, 
+                    eSolidAreaY,
+                    gp.tileSize * e.dimX,
+                    gp.tileSize * e.dimY);  
+
+                Rectangle objSolidArea = new Rectangle(
+                    o.worldX + o.solidArea.x, 
+                    o.worldY + o.solidArea.y,
+                    gp.tileSize * o.dimX,
+                    gp.tileSize * o.dimY);
+
+
+                switch (e.direction) {
+                    case "up":
+                        eSolidArea.y -= (e.speed + e.speedBonus);
+                        if (eSolidArea.intersects(objSolidArea)) {
+                            if (o.collision) {
+                                e.collisionOn = true;
+                            }
+                            if (player) {
+                                index = i;
+                            }
+                        }
+                        break;
+                    case "down":
+                        eSolidArea.y += (e.speed + e.speedBonus);
+                        if (eSolidArea.intersects(objSolidArea)) {
+                            if (o.collision) {
+                                e.collisionOn = true;
+                            }
+                            if (player) {
+                                index = i;
+                            }
+                        }
+                        break;
+                    case "left":
+                        eSolidArea.x -= (e.speed + e.speedBonus);
+                        if (eSolidArea.intersects(objSolidArea)) {
+                            if (o.collision) {
+                                e.collisionOn = true;
+                            }
+                            if (player) {
+                                index = i;
+                            }
+                        }
+                        break;
+                    case "right":
+                        eSolidArea.x += (e.speed + e.speedBonus);
+                        if (eSolidArea.intersects(objSolidArea)) {
+                            if (o.collision) {
+                                e.collisionOn = true;
+                            }
+                            if (player) {
+                                index = i;
+                            }
+                        }
+                        break;
+                    }
+
+            }
+        }
+        return index;
     }
 
     public void checkTile(Entity e) {

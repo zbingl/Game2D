@@ -26,6 +26,9 @@ public class Player extends Entity {
 
         solidArea = new Rectangle(8, 16, 32, 32);
 
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+
 
 
         setDefaultValues();
@@ -78,27 +81,33 @@ public class Player extends Entity {
             if (keyH.upPressed) {
                 direction = "up";
                 gp.cc.checkTile(this);
+                int objIndex = gp.cc.checkObject(this, true);
                 worldY -= !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
             if (keyH.downPressed) {
                 direction = "down";
                 gp.cc.checkTile(this);
+                int objIndex = gp.cc.checkObject(this, true);
                 worldY += !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
             if (keyH.leftPressed) {
                 direction = "left";
                 gp.cc.checkTile(this);
+                int objIndex = gp.cc.checkObject(this, true);
                 worldX -= !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
             if (keyH.rightPressed) {
                 direction = "right";
                 gp.cc.checkTile(this);
+                int objIndex = gp.cc.checkObject(this, true);
                 worldX += !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
+
+            //int objIndex = gp.cc.checkObject(this, true);
 
             
 
