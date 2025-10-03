@@ -6,7 +6,7 @@ Map editor : [Tiled](https://www.mapeditor.org/)
 
 
 ![alt text](src/res/objects/CasetteComputer.png)
-![alt text](src/res/player/down_still.png)
+![alt text](src/res/player/down0.png)
 ![alt text](PixelArtWIP/bush.png)
 ![alt text](src/res/objects/computer1.png)
 
