@@ -7,6 +7,8 @@ Map editor : [Tiled](https://www.mapeditor.org/)
 
 ![alt text](src/res/objects/CasetteComputer.png)
 ![alt text](src/res/player/down0.png)
+![alt text](src/res/objects/radioBig.png)
+![alt text](src/res/objects/radio.png)
 ![alt text](PixelArtWIP/bush.png)
 ![alt text](src/res/objects/computer1.png)
 
@@ -16,7 +18,8 @@ Implement JSON map files for Tiled compatibility\
 HUD\
 ~~objects~~\
 ~~collision~~\
-object collision\
-object interaction
-finish player sprites
+~~object collision~~\
+~~object interaction~~\
+interaction popup\
+finish player sprites\
 new textures and tiles
