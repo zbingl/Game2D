@@ -17,6 +17,7 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
     int currObject = 999;
+    public BufferedImage interactionMessage;
 
     public Player(GamePanel gp, KeyHandler keyH2) {
         this.gp = gp;
@@ -59,6 +60,8 @@ public class Player extends Entity {
             left2 = ImageIO.read(getClass().getResourceAsStream("/res/player/left1.png"));
             right1 = ImageIO.read(getClass().getResourceAsStream("/res/player/right0.png"));
             right2 = ImageIO.read(getClass().getResourceAsStream("/res/player/right1.png"));
+
+            interactionMessage = ImageIO.read(getClass().getResourceAsStream("/res/hud/interactMessage.png"));
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -66,6 +69,7 @@ public class Player extends Entity {
     }
 
     public void update() {
+
         if (keyH.eTyped && currObject < gp.obj.length ){
             if (gp.obj[currObject].interactable) {
                 gp.obj[currObject].interact(); 
@@ -191,6 +195,21 @@ public class Player extends Entity {
         screenX - gp.tileSize * (dimX - 1), 
         screenY - gp.tileSize * (dimY - 1), 
         gp.tileSize * dimX, 
+        gp.tileSize * dimY, 
+        null);
+
+        if (currObject < gp.obj.length && gp.obj[currObject].interactable) {
+            drawInderactionMessage(g2);
+        }
+        
+
+    }
+
+    public void drawInderactionMessage(Graphics2D g2) {
+        g2.drawImage(interactionMessage, 
+        screenX - 1 * gp.tileSize / 3, 
+        screenY - 8 * gp.tileSize / 3, 
+        gp.tileSize * dimX * 2, 
         gp.tileSize * dimY, 
         null);
     }
