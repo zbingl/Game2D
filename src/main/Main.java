@@ -1,7 +1,7 @@
 package main;
 
 import javax.swing.JFrame;
-import music.MusicPlayer;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -19,8 +19,6 @@ public class Main {
 
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-
-        new MusicPlayer("src/music/Dire Straits - Sultans Of Swing.wav");
 
         gamePanel.setUpGame();
         gamePanel.startGameThread();

@@ -66,9 +66,12 @@ public class Player extends Entity {
     }
 
     public void update() {
-        if (keyH.ePressed && gp.obj[currObject] != null && gp.obj[currObject].interactable){
-                gp.obj[currObject].interact();
-            }
+        if (keyH.eTyped && currObject < gp.obj.length ){
+            if (gp.obj[currObject].interactable) {
+                gp.obj[currObject].interact(); 
+            }    
+        }
+        keyH.consumeETyped();
 
         if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
             moving = true;
@@ -110,10 +113,6 @@ public class Player extends Entity {
                 worldX += !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
-
-
-            
-            System.out.println(currObject);
 
 
             spriteCounter ++;
