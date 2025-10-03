@@ -16,6 +16,7 @@ public class Player extends Entity {
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
+    int currObject = 999;
 
     public Player(GamePanel gp, KeyHandler keyH2) {
         this.gp = gp;
@@ -65,6 +66,9 @@ public class Player extends Entity {
     }
 
     public void update() {
+        if (keyH.ePressed && gp.obj[currObject] != null && gp.obj[currObject].interactable){
+                gp.obj[currObject].interact();
+            }
 
         if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
             moving = true;
@@ -81,36 +85,35 @@ public class Player extends Entity {
             if (keyH.upPressed) {
                 direction = "up";
                 gp.cc.checkTile(this);
-                int objIndex = gp.cc.checkObject(this, true);
+                currObject = gp.cc.checkObject(this, true);
                 worldY -= !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
             if (keyH.downPressed) {
                 direction = "down";
                 gp.cc.checkTile(this);
-                int objIndex = gp.cc.checkObject(this, true);
+                currObject = gp.cc.checkObject(this, true);
                 worldY += !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
             if (keyH.leftPressed) {
                 direction = "left";
                 gp.cc.checkTile(this);
-                int objIndex = gp.cc.checkObject(this, true);
+                currObject = gp.cc.checkObject(this, true);
                 worldX -= !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
             if (keyH.rightPressed) {
                 direction = "right";
                 gp.cc.checkTile(this);
-                int objIndex = gp.cc.checkObject(this, true);
+                currObject = gp.cc.checkObject(this, true);
                 worldX += !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
 
-            //int objIndex = gp.cc.checkObject(this, true);
 
             
-
+            System.out.println(currObject);
 
 
             spriteCounter ++;

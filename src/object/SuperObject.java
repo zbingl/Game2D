@@ -11,6 +11,7 @@ public class SuperObject {
     public BufferedImage image;
     public String name;
     public boolean collision = false;
+    public boolean interactable = false;
     public int worldX, worldY;
     public int dimX, dimY;
     public Rectangle solidArea = new Rectangle(0,0, 48 * dimX, 48 * dimY);
@@ -28,5 +29,9 @@ public class SuperObject {
         worldY < gp.player.worldY + gp.player.screenY + gp.tileSize*dimY) {
             g2.drawImage(image, screenX, screenY, dimX*gp.tileSize, dimY*gp.tileSize, null);
         }
-    }   
+    }
+    
+    public void interact() {
+        
+    }
 }

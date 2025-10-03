@@ -14,7 +14,7 @@ public class AssetSetter {
     public void setObject() {
         gp.obj[0] = new OBJ_CardBoardBox();
         gp.obj[0].worldX = 6 * gp.tileSize;
-        gp.obj[0].worldY = 3 * gp.tileSize;
+        gp.obj[0].worldY = 5 * gp.tileSize;
 
         gp.obj[1] = new OBJ_CasetteComputer();
         gp.obj[1].worldX = 7 * gp.tileSize;
