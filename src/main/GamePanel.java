@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 
 import javax.swing.JPanel;
 
@@ -12,21 +13,23 @@ import object.SuperObject;
 import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
+    
+
+
+
+
     final int originalTileSize = 16; // 16 x 16 px
     final int scale = 3;
 
     public final int tileSize = originalTileSize * scale; // 48 x 48 px
-    public final int maxScreenCol = 35;
-    public final int maxScreenRow = 20;
-    public final int screenWidth = tileSize * maxScreenCol;
-    public final int screenHeight = tileSize * maxScreenRow;
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    public final int screenWidth = (int) screenSize.getWidth();
+    public final int screenHeight = (int) screenSize.getHeight();;
 
-    // These must be larger than the map for the map to load properly
+    // These must be same as the map for the map to load properly
     public int maxWorldCol = 16;
     public int maxWorldRow = 12;
 
-    //public final int worldWith = tileSize * maxScreenCol;
-    //public final int worldHeight = tileSize * maxScreenRow;
 
     int FPS = 60;
 

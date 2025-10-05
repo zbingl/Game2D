@@ -6,9 +6,9 @@ Map editor : [Tiled](https://www.mapeditor.org/)
 
 
 ![alt text](src/res/objects/CasetteComputer.png)
+![alt text](src/res/objects/door.png)
 ![alt text](src/res/player/down0.png)
 ![alt text](src/res/objects/table.png)
-![alt text](src/res/objects/door.png)
 ![alt text](src/res/objects/radioBig.png)
 ![alt text](src/res/objects/radio.png)
 ![alt text](PixelArtWIP/bush.png)
@@ -16,7 +16,7 @@ Map editor : [Tiled](https://www.mapeditor.org/)
 
 ## TODO
 ### Hight priority
-move maxWorldRow and maxWorldCol to TileManager, set to appropriate values after loading map file in constructor\
+Set to appropriate values to maxWorldRow and maxWorldCol after loading map file in constructor\
 ~~objects~~\
 ~~collision~~\
 ~~object collision~~\
@@ -31,8 +31,9 @@ placing and removing objects\
 only rendering objects that are on screen\
 
 ### Low priority
-finish player sprites\
+add second "player walking sideways" sprite\
 house sprite\
+objects for the house\
 Implement JSON map files for Tiled compatibility\
 new textures and tiles
 
