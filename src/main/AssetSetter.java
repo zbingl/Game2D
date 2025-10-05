@@ -4,6 +4,7 @@ package main;
 import object.OBJ_CardBoardBox;
 import object.OBJ_CasetteComputer;
 import object.OBJ_Door;
+import object.OBJ_House;
 import object.OBJ_PersonalComputer;
 import object.OBJ_Radio;
 import object.OBJ_Table;
@@ -57,6 +58,7 @@ public class AssetSetter {
         }
 
         if (gp.tileM.currMapPath.equals("/res/maps/map2.txt")) {
+            setObjectAt(new OBJ_House(), 8, 6);
             setObjectAt(new OBJ_Door(gp, "/res/maps/map1.txt", 7, 9), 10, 10);
         }
     }

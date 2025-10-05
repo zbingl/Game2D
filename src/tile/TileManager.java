@@ -50,6 +50,8 @@ public class TileManager {
             tile[6].image = ImageIO.read(getClass().getResource("/res/tiles/earth.png"));
 
             
+
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
