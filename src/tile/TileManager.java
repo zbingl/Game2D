@@ -14,12 +14,14 @@ public class TileManager {
     GamePanel gp;
     public Tile[] tile;
     public int mapTileNum[][];
+    public String currMapPath;
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
         tile = new Tile[10];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
+        System.out.println("before mapload");
         loadMap("/res/maps/map1.txt");
     }
 
@@ -53,6 +55,7 @@ public class TileManager {
     }
 
     public void loadMap(String filePath) {
+        currMapPath = filePath;
         try {
             InputStream is = getClass().getResourceAsStream(filePath);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -88,7 +91,6 @@ public class TileManager {
             }
             br.close();
         } catch (Exception e) {
-
         }
     }
 

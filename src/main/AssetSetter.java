@@ -1,9 +1,12 @@
 package main;
 
+
 import object.OBJ_CardBoardBox;
 import object.OBJ_CasetteComputer;
+import object.OBJ_Door;
 import object.OBJ_PersonalComputer;
 import object.OBJ_Radio;
+import object.SuperObject;
 
 public class AssetSetter {
     GamePanel gp;
@@ -12,21 +15,40 @@ public class AssetSetter {
         this.gp = gp;
     }
 
-    public void setObject() {
-        gp.obj[0] = new OBJ_CardBoardBox();
-        gp.obj[0].worldX = 9 * gp.tileSize;
-        gp.obj[0].worldY = 6 * gp.tileSize;
 
-        gp.obj[1] = new OBJ_CasetteComputer();
-        gp.obj[1].worldX = 7 * gp.tileSize;
-        gp.obj[1].worldY = 1 * gp.tileSize;
+    public void setObjectAt(SuperObject obj, int x, int y) {
+        int i = 0;
+        while (gp.obj[i] != null) {
+            if (i + 1 == gp.obj.length) {
+                System.out.println("no space left in object array");
+                return;
+            }
+            i++;
+        }
 
-        gp.obj[2] = new OBJ_PersonalComputer();
-        gp.obj[2].worldX = 6 * gp.tileSize;
-        gp.obj[2].worldY = 4 * gp.tileSize;
+        gp.obj[i] = obj;
+        gp.obj[i].worldX = x * gp.tileSize;
+        gp.obj[i].worldY = y * gp.tileSize;
+    }
 
-        gp.obj[3] = new OBJ_Radio();
-        gp.obj[3].worldX = 6 * gp.tileSize;
-        gp.obj[3].worldY = 6 * gp.tileSize;
+    public void setObjects() {
+        for (int i = 0; i < gp.obj.length; i++) {
+            gp.obj[i] = null;
+        }
+
+        System.out.println(gp.tileM.currMapPath);
+        System.out.println("hello");
+
+        if (gp.tileM.currMapPath == "/res/maps/map1.txt") {
+            setObjectAt(new OBJ_CardBoardBox(), 9, 6);
+            setObjectAt(new OBJ_CasetteComputer(), 7, 1);
+            setObjectAt(new OBJ_PersonalComputer(), 6, 4);
+            setObjectAt(new OBJ_Radio(), 6, 6);
+            setObjectAt(new OBJ_Door(gp, "/res/maps/map2.txt"), 9, 7);
+        }
+
+        if (gp.tileM.currMapPath == "/res/maps/map2.txt") {
+            setObjectAt(new OBJ_Door(gp, "/res/maps/map1.txt"), 20, 20);
+        }
     }
 }

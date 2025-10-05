@@ -37,7 +37,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this, keyH);
     public SuperObject obj[] = new SuperObject[10];
 
-    TileManager tileM = new TileManager(this);
+    public TileManager tileM = new TileManager(this);
 
 
     public GamePanel() {
@@ -49,7 +49,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void setUpGame() {
-        aSetter.setObject();
+        aSetter.setObjects();
     }
 
     public void startGameThread() {

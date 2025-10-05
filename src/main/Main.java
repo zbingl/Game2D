@@ -13,6 +13,7 @@ public class Main {
         
 
         GamePanel gamePanel = new GamePanel();
+        System.out.println(gamePanel.tileM.currMapPath);
         window.add(gamePanel);
         window.pack();
 
