@@ -1,5 +1,6 @@
 package object;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -10,11 +11,13 @@ public class OBJ_CardBoardBox extends SuperObject {
     BufferedImage frame2;
 
     public OBJ_CardBoardBox() {
+        
         name = "box";
         dimX = 1;
         dimY = 1;
         interactable = true;
         collision = true;
+        solidArea = new Rectangle(0, 0 , dimX * 48, dimY * 48);
         
 
         try {

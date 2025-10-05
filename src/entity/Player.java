@@ -16,7 +16,7 @@ public class Player extends Entity {
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
-    int currObject = 999;
+    public int currObject = 999;
     public BufferedImage interactionMessage;
 
     public Player(GamePanel gp, KeyHandler keyH2) {
@@ -198,8 +198,10 @@ public class Player extends Entity {
         gp.tileSize * dimY, 
         null);
 
-        if (currObject < gp.obj.length && gp.obj[currObject].interactable) {
-            drawInderactionMessage(g2);
+        if (currObject < gp.obj.length && gp.obj[currObject] != null) {
+            if (gp.obj[currObject].interactable) {
+                drawInderactionMessage(g2);
+            }
         }
         
 

@@ -14,9 +14,10 @@ public class SuperObject {
     public boolean interactable = false;
     public int worldX, worldY;
     public int dimX, dimY;
-    public Rectangle solidArea = new Rectangle(0,0, 48 * dimX, 48 * dimY);
+    public Rectangle solidArea;
     public int solidAreaDefaultX = 0;
     public int solidAreaDefaultY = 0;
+
 
 
     public void draw(Graphics2D g2, GamePanel gp) {

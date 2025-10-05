@@ -32,8 +32,8 @@ public class CollisionChecker {
                 Rectangle objSolidArea = new Rectangle(
                     o.worldX + o.solidArea.x, 
                     o.worldY + o.solidArea.y,
-                    gp.tileSize * o.dimX,
-                    gp.tileSize * o.dimY);
+                    o.solidArea.width,
+                    o.solidArea.height);
 
 
                 switch (e.direction) {

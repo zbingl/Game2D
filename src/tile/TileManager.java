@@ -19,9 +19,7 @@ public class TileManager {
     public TileManager(GamePanel gp) {
         this.gp = gp;
         tile = new Tile[10];
-        mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
-        System.out.println("before mapload");
         loadMap("/res/maps/map1.txt");
     }
 
@@ -46,7 +44,10 @@ public class TileManager {
             tile[4].collision = true;
 
             tile[5] = new Tile();
-            tile[5].image = ImageIO.read(getClass().getResource("/res/tiles/earth.png"));
+            tile[5].image = ImageIO.read(getClass().getResource("/res/tiles/woodFloor.png"));
+
+            tile[6] = new Tile();
+            tile[6].image = ImageIO.read(getClass().getResource("/res/tiles/earth.png"));
 
             
         } catch (IOException e) {
@@ -56,14 +57,22 @@ public class TileManager {
 
     public void loadMap(String filePath) {
         currMapPath = filePath;
+
+        if (currMapPath.equals("/res/maps/map1.txt")) {
+            gp.maxWorldCol = 16;
+            gp.maxWorldRow = 12;
+        }
+        if (currMapPath.equals("/res/maps/map2.txt")) {
+            gp.maxWorldCol = 50;
+            gp.maxWorldRow = 50;
+        }
+        mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         try {
             InputStream is = getClass().getResourceAsStream(filePath);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col = 0;
             int row = 0;
-
-            System.out.println(gp.maxWorldCol);
 
             while ( col < gp.maxWorldCol && row < gp.maxWorldRow) {
                 String line = br.readLine();
@@ -74,11 +83,14 @@ public class TileManager {
                     String numbers[] = line.split(" ");
 
                     int num;
+                     
                     try {
                         num = Integer.parseInt(numbers[col]);
                     } catch (Exception e) {
                         num = 4;
                     }
+
+                    //int num = Integer.parseInt(numbers[col]);
 
                     mapTileNum[col][row] = num;
                     col++;
