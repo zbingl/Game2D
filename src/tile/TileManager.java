@@ -61,8 +61,8 @@ public class TileManager {
         currMapPath = filePath;
 
         if (currMapPath.equals("/res/maps/map1.txt")) {
-            gp.maxWorldCol = 16;
-            gp.maxWorldRow = 12;
+            gp.maxWorldCol = 32;
+            gp.maxWorldRow = 18;
         }
         if (currMapPath.equals("/res/maps/map2.txt")) {
             gp.maxWorldCol = 50;

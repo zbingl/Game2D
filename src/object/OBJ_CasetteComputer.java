@@ -8,7 +8,7 @@ public class OBJ_CasetteComputer extends SuperObject {
 
     public OBJ_CasetteComputer() {
         super();
-        name = "box";
+        name = "casette computer";
         dimX = 4;
         dimY = 3;
         solidArea = new Rectangle(0, 0 , dimX * 48, dimY * 48);
