@@ -47,7 +47,7 @@ public class AssetSetter {
             gp.obj[i] = null;
         }
 
-        if (gp.tileM.currMapPath.equals("/res/maps/map1.txt")) {
+        if (gp.tileM.currMapName.equals("house main")) {
             //setObjectAt(new OBJ_Table(new OBJ_PersonalComputer()), 6,0);
             //setObjectAt(new OBJ_Table(new OBJ_CardBoardBox()), 7, 0);
 
@@ -55,45 +55,42 @@ public class AssetSetter {
 
 
             //bedroom
-            setObjectAt(new OBJ_Table(new OBJ_Radio()), 23, 0);
-            setObjectAt(new OBJ_DoubleBed(), 24, 0);
-            setObjectAt(new OBJ_Shelf(), 20, -1);
+            setObjectAt(new OBJ_Table(new OBJ_Radio()), 19, 0);
+            setObjectAt(new OBJ_DoubleBed(), 20, 0);
+            setObjectAt(new OBJ_Shelf(), 24, -1);
             
             //kitchen
-            setObjectAt(new OBJ_CounterTop(), 1, 14);
-            setObjectAt(new OBJ_CounterTop(), 1, 15);
-            setObjectAt(new OBJ_CounterTop(), 1, 16);
-            setObjectAt(new OBJ_Sink(), 2, 16);
-            setObjectAt(new OBJ_StoveTop(), 3, 16);
-            setObjectAt(new OBJ_CounterTop(), 4, 16);
-            setObjectAt(new OBJ_CounterTop(), 5, 16);
-            setObjectAt(new OBJ_CounterTop(), 6, 16);
-            setObjectAt(new OBJ_CounterTop(), 7, 16);
+            setObjectAt(new OBJ_CounterTop(), 1, 10);
+            setObjectAt(new OBJ_CounterTop(), 1, 11);
+            setObjectAt(new OBJ_CounterTop(), 1, 12);
+            setObjectAt(new OBJ_Sink(), 2, 12);
+            setObjectAt(new OBJ_StoveTop(), 3, 12);
+            setObjectAt(new OBJ_CounterTop(), 4, 12);
+            setObjectAt(new OBJ_CounterTop(), 5, 12);
+            setObjectAt(new OBJ_CounterTop(), 6, 12);
+            setObjectAt(new OBJ_CounterTop(), 7, 12);
 
             //livingroom
-            setObjectAt(new OBJ_Carpet(), 5, 3);
-            setObjectAt(new OBJ_DinnerTable(), 15,0);
-            setObjectAt(new OBJ_Chair("left"), 17,0);
-            setObjectAt(new OBJ_Chair("left"), 17,1);
-            setObjectAt(new OBJ_Chair("right"), 14,0);
-            setObjectAt(new OBJ_Chair("right"), 14,1);
-
-
-
+            setObjectAt(new OBJ_Carpet(), 3, 2);
+            setObjectAt(new OBJ_DinnerTable(), 15,8);
+            setObjectAt(new OBJ_Chair("left"), 17,8);
+            setObjectAt(new OBJ_Chair("left"), 17,9);
+            setObjectAt(new OBJ_Chair("right"), 14,8);
+            setObjectAt(new OBJ_Chair("right"), 14,9);
 
 
 
             //hallway
-            setObjectAt(new OBJ_ShoeRack(), 29, 16);
-            setObjectAt(new OBJ_DoorMat(), 28, 16);
+            setObjectAt(new OBJ_ShoeRack(), 25, 12);
+            setObjectAt(new OBJ_DoorMat(), 24, 12);
 
 
-            setObjectAt(new OBJ_Door(gp, "/res/maps/map2.txt", 10, 12 ), 27, 16);
+            setObjectAt(new OBJ_Door("out", gp, "yard", 10, 12 ), 24, 13);
         }
 
-        if (gp.tileM.currMapPath.equals("/res/maps/map2.txt")) {
+        if (gp.tileM.currMapName.equals("yard")) {
             setObjectAt(new OBJ_House(), 8, 6);
-            setObjectAt(new OBJ_Door(gp, "/res/maps/map1.txt", 27, 15), 10, 10);
+            setObjectAt(new OBJ_Door("in", gp, "house main", 24, 12), 10, 10);
         }
     }
 }

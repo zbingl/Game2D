@@ -14,36 +14,49 @@ public class OBJ_Door extends SuperObject {
     BufferedImage frame1;
     BufferedImage frame2;
     GamePanel gp;
-    String mapPath;
+    String mapName;
 
 
-    public OBJ_Door(GamePanel gp, String mapPath, int newPlayerX, int newPlayerY) {
+    public OBJ_Door(String direction, GamePanel gp, String mapName, int newPlayerX, int newPlayerY) {
         super();
         name = "door";
-        dimX = 1;
-        dimY = 2;
-        solidArea = new Rectangle(0, 0 , dimX * 48, dimY * 48);
+        
+        
         interactable = true;
         collision = true;
         this.gp = gp;
-        this.mapPath = mapPath;
+        this.mapName = mapName;
         this.newPlayerX = newPlayerX;
         this.newPlayerY = newPlayerY;
         
-
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream("/res/objects/door.png"));
+        if (direction.equals("in")) {
+            try {
+            image = ImageIO.read(getClass().getResourceAsStream("/res/objects/doorEnterance.png"));
+            dimX = 1;
+            dimY = 2;
 
         } catch (IOException e) {
             e.printStackTrace();
-        }   
+        }  
+        } else {
+            try {
+            image = ImageIO.read(getClass().getResourceAsStream("/res/objects/doorExit(1x1).png"));
+            dimX = 1;
+            dimY = 1;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }  
+        }
+
+        solidArea = new Rectangle(0, 0 , dimX * 48, dimY * 48);
+
+         
     }
 
     @Override
     public void interact() {
-        //Change this to something better asap
-        gp.tileM.loadMap(mapPath);
-        
+        gp.tileM.loadMap(mapName);
         gp.aSetter.setObjects();
         gp.player.worldX = newPlayerX * gp.tileSize;
         gp.player.worldY = newPlayerY * gp.tileSize;

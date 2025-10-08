@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
@@ -14,16 +17,22 @@ public class TileManager {
     GamePanel gp;
     public Tile[] tile;
     public int mapTileNum[][];
-    public String currMapPath;
+    public String currMapName  = "house main";
+    public TreeMap<String, GameMap> mapList;
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
         tile = new Tile[10];
-        getTileImage();
-        loadMap("/res/maps/map1.txt");
+        getTileImages();
+        mapList = new TreeMap<String, GameMap>();
+        mapList.put("house main", new GameMap("/res/maps/houseMain.txt", 28, 14, gp));
+        mapList.put("house bedroom", new GameMap("/res/maps/houseBedroom.txt", 16, 8, gp));
+        mapList.put("yard", new GameMap("/res/maps/yard.txt", 50, 50, gp));
+
+        loadMap(currMapName);
     }
 
-    public void getTileImage() {
+    public void getTileImages() {
         try {
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(getClass().getResource("/res/tiles/grass.png"));
@@ -57,55 +66,18 @@ public class TileManager {
         }
     }
 
-    public void loadMap(String filePath) {
-        currMapPath = filePath;
+    public void loadMap(String mapName) {
+        mapList.get(currMapName).objectList = gp.obj;
 
-        if (currMapPath.equals("/res/maps/map1.txt")) {
-            gp.maxWorldCol = 32;
-            gp.maxWorldRow = 18;
-        }
-        if (currMapPath.equals("/res/maps/map2.txt")) {
-            gp.maxWorldCol = 50;
-            gp.maxWorldRow = 50;
-        }
-        mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
-        try {
-            InputStream is = getClass().getResourceAsStream(filePath);
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
-            int col = 0;
-            int row = 0;
-
-            while ( col < gp.maxWorldCol && row < gp.maxWorldRow) {
-                String line = br.readLine();
+        GameMap map = mapList.get(mapName);
+        gp.maxWorldCol = map.worldCol;
+        gp.maxWorldRow = map.worldrow;
+        this.mapTileNum = map.mapTileNum;
+        this.currMapName = mapName;
 
 
-                while (col < gp.maxWorldCol) {
-                    
-                    String numbers[] = line.split(" ");
-
-                    int num;
-                     
-                    try {
-                        num = Integer.parseInt(numbers[col]);
-                    } catch (Exception e) {
-                        num = 4;
-                    }
-
-                    //int num = Integer.parseInt(numbers[col]);
-
-                    mapTileNum[col][row] = num;
-                    col++;
-                }
-
-                if (col == gp.maxWorldCol) {
-                    col = 0;
-                    row ++;
-                }
-            }
-            br.close();
-        } catch (Exception e) {
-        }
+        //if map.objectlist is not empty make it the current objectlist
+        //this.gp.obj = map.objectList;
     }
 
     public void draw(Graphics2D g2) {
