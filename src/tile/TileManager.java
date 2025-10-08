@@ -26,7 +26,7 @@ public class TileManager {
         getTileImages();
         mapList = new TreeMap<String, GameMap>();
         mapList.put("house main", new GameMap("/res/maps/houseMain.txt", 28, 14, gp));
-        mapList.put("house bedroom", new GameMap("/res/maps/houseBedroom.txt", 16, 8, gp));
+        mapList.put("house bedroom", new GameMap("/res/maps/houseBedroom.txt", 19, 8, gp));
         mapList.put("yard", new GameMap("/res/maps/yard.txt", 50, 50, gp));
 
         loadMap(currMapName);
@@ -42,11 +42,11 @@ public class TileManager {
             tile[1].collision = true;
 
             tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResource("/res/tiles/water01.png"));
+            tile[2].image = ImageIO.read(getClass().getResource("/res/tiles/water00.png"));
             tile[2].collision = true;
 
             tile[3] = new Tile();
-            tile[3].image = ImageIO.read(getClass().getResource("/res/tiles/hut.png"));
+            tile[3].image = ImageIO.read(getClass().getResource("/res/tiles/void.png"));
 
             tile[4] = new Tile();
             tile[4].image = ImageIO.read(getClass().getResource("/res/tiles/bush.png"));
@@ -58,6 +58,7 @@ public class TileManager {
             tile[6] = new Tile();
             tile[6].image = ImageIO.read(getClass().getResource("/res/tiles/earth.png"));
 
+
             
 
             
@@ -67,17 +68,12 @@ public class TileManager {
     }
 
     public void loadMap(String mapName) {
-        mapList.get(currMapName).objectList = gp.obj;
-
         GameMap map = mapList.get(mapName);
         gp.maxWorldCol = map.worldCol;
         gp.maxWorldRow = map.worldrow;
         this.mapTileNum = map.mapTileNum;
         this.currMapName = mapName;
-
-
-        //if map.objectlist is not empty make it the current objectlist
-        //this.gp.obj = map.objectList;
+        this.gp.obj = map.objectList;
     }
 
     public void draw(Graphics2D g2) {

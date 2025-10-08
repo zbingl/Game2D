@@ -15,10 +15,10 @@ public class CollisionChecker {
     public int checkObject(Entity e, boolean player) {
         int index = 999;
 
-        for (int i = 0; i < gp.obj.length; i++) {
-            if (gp.obj[i] != null) {
+        for (int i = 0; i < gp.obj.size(); i++) {
+            if (gp.obj.get(i) != null) {
 
-                SuperObject o = gp.obj[i];
+                SuperObject o = gp.obj.get(i);
 
                 int eSolidAreaX = e.worldX + e.solidArea.x;
                 int eSolidAreaY = e.worldY + e.solidArea.y;

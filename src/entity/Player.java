@@ -38,8 +38,8 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-        worldX = gp.tileSize * 2;
-        worldY = gp.tileSize * 2;
+        worldX = gp.tileSize * 10;
+        worldY = gp.tileSize * 10;
         dimX = 1;
         dimY = 2;
         speed = 4;
@@ -70,9 +70,9 @@ public class Player extends Entity {
 
     public void update() {
 
-        if (keyH.eTyped && currObject < gp.obj.length ){
-            if (gp.obj[currObject].interactable) {
-                gp.obj[currObject].interact(); 
+        if (keyH.eTyped && currObject < gp.obj.size() ){
+            if (gp.obj.get(currObject).interactable) {
+                gp.obj.get(currObject).interact(); 
             }    
         }
         keyH.consumeETyped();
@@ -198,8 +198,8 @@ public class Player extends Entity {
         gp.tileSize * dimY, 
         null);
 
-        if (currObject < gp.obj.length && gp.obj[currObject] != null) {
-            if (gp.obj[currObject].interactable) {
+        if (currObject < gp.obj.size() && gp.obj.get(currObject) != null) {
+            if (gp.obj.get(currObject).interactable) {
                 drawInderactionMessage(g2);
             }
         }

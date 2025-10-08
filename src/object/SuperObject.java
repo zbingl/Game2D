@@ -35,4 +35,8 @@ public class SuperObject {
     public void interact() {
         
     }
+
+    public String toString() {
+        return name;
+    }
 }

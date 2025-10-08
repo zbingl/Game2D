@@ -3,6 +3,7 @@ package tile;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import main.GamePanel;
 import object.SuperObject;
@@ -12,12 +13,21 @@ public class GameMap {
     int worldCol;
     int worldrow;
     String mapPath;
-    SuperObject objectList[];
+    ArrayList<SuperObject> objectList;
+    GamePanel gp;
 
     public GameMap(String mapPath, int worldCol, int worldRow, GamePanel gp) {
         this.worldCol = worldCol;
         this.worldrow = worldRow;
         this.mapPath = mapPath;
+        this.gp = gp;
+        this.objectList = gp.aSetter.setObjects(mapPath);
+        try {
+            System.out.println(this.objectList.get(0).toString());
+        } catch (Exception e) {
+            System.out.println("empty");
+        }
+        
         loadMap();
     }
 

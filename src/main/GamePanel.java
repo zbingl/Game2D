@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -38,7 +39,7 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker cc = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this, keyH);
-    public SuperObject obj[] = new SuperObject[50];
+    public ArrayList<SuperObject> obj = new ArrayList<>();
 
     public TileManager tileM = new TileManager(this);
 
@@ -51,9 +52,6 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
     }
 
-    public void setUpGame() {
-        aSetter.setObjects();
-    }
 
     public void startGameThread() {
         gameThread = new Thread(this);
@@ -97,9 +95,9 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
 
         tileM.draw(g2);
-        for (int i = 0; i < obj.length; i++) {
-            if (obj[i] != null) {
-                obj[i].draw(g2, this);
+        for (int i = 0; i < obj.size(); i++) {
+            if (obj.get(i) != null) {
+                obj.get(i).draw(g2, this);
             }
 
         }

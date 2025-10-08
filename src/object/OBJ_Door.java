@@ -57,7 +57,6 @@ public class OBJ_Door extends SuperObject {
     @Override
     public void interact() {
         gp.tileM.loadMap(mapName);
-        gp.aSetter.setObjects();
         gp.player.worldX = newPlayerX * gp.tileSize;
         gp.player.worldY = newPlayerY * gp.tileSize;
         gp.player.currObject = 999;
