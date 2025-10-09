@@ -24,12 +24,13 @@ Map editor : [Tiled](https://www.mapeditor.org/)
 ~~object interaction~~\
 ~~interaction popup~~\
 ~~object permanence (exiting and entering new areas)~~\
+~~gradle~~\
 HUD and UI\
 render object first if player is behind object\
 only rendering objects that are on screen\
 table interaction (adding and removing objects)\
 placing and removing objects\
-inventory\
+inventory
 
 ### Low priority
 add second "player walking sideways" sprite\
