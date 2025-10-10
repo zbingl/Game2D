@@ -22,11 +22,11 @@ public class TileManager {
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
-        tile = new Tile[20];
+        tile = new Tile[25];
         getTileImages();
         mapList = new TreeMap<String, GameMap>();
         mapList.put("house main", new GameMap("/res/maps/houseMain.txt", 28, 14, gp));
-        mapList.put("house bedroom", new GameMap("/res/maps/houseBedroom.txt", 19, 8, gp));
+        mapList.put("house bedroom", new GameMap("/res/maps/houseBedroom.txt", 19, 10, gp));
         mapList.put("yard", new GameMap("/res/maps/yard.txt", 50, 50, gp));
 
         loadMap(currMapName);
@@ -115,7 +115,9 @@ public class TileManager {
             tile[19].image = ImageIO.read(getClass().getResource("/res/tiles/walls/rightWall.png"));
             tile[19].collision = true;
 
-
+            tile[20] = new Tile();
+            tile[20].image = ImageIO.read(getClass().getResource("/res/tiles/walls/wall.png"));
+            tile[20].collision = true;
 
 
 

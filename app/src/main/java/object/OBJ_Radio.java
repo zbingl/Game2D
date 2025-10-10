@@ -21,7 +21,7 @@ public class OBJ_Radio extends SuperObject{
 
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/res/objects/radio.png"));
-            player = new MusicPlayer("src/music/Dire Straits - Sultans Of Swing.wav");
+            player = new MusicPlayer("/res/music/Dire Straits - Sultans Of Swing.wav");
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -59,21 +59,21 @@ public class AssetSetter {
             setObjectAt(new OBJ_Chair("right"), 14,8, objList);
             setObjectAt(new OBJ_Chair("right"), 14,9, objList);
             //hallway
-            setObjectAt(new OBJ_ShoeRack(), 25, 12, objList);
+            //setObjectAt(new OBJ_ShoeRack(), 25, 12, objList);
             setObjectAt(new OBJ_DoorMat(), 24, 12, objList);
 
             //doors
             setObjectAt(new OBJ_Door("out", gp, "yard", 10, 12 ), 24, 13, objList);
-            setObjectAt(new OBJ_Door("in", gp, "house bedroom", 15, 6 ), 24, 7, objList);
+            setObjectAt(new OBJ_Door("in", gp, "house bedroom", 15, 8 ), 24, 7, objList);
         }
 
         if (mapPath.equals("/res/maps/houseBedroom.txt")) {
-            setObjectAt(new OBJ_Table(new OBJ_Radio()), 13, 0, objList);
-            setObjectAt(new OBJ_DoubleBed(), 10, 0, objList);
-            setObjectAt(new OBJ_Shelf(), 15, -1, objList);
+            setObjectAt(new OBJ_Table(new OBJ_Radio()), 13, 2, objList);
+            setObjectAt(new OBJ_DoubleBed(), 10, 2, objList);
+            setObjectAt(new OBJ_Shelf(), 15, 1, objList);
 
             //doors
-            setObjectAt(new OBJ_Door("out", gp, "house main", 24, 9), 15, 7, objList);
+            setObjectAt(new OBJ_Door("out", gp, "house main", 24, 9), 15, 9, objList);
         }
 
         if (mapPath.equals("/res/maps/yard.txt")) {
