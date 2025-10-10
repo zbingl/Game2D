@@ -70,6 +70,8 @@ public class Player extends Entity {
 
     public void update() {
 
+        gp.cc.checkIfBehindObject(this);
+
         if (keyH.eTyped && currObject < gp.obj.size() ){
             if (gp.obj.get(currObject).interactable) {
                 gp.obj.get(currObject).interact(); 

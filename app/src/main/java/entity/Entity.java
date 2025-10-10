@@ -10,6 +10,7 @@ public class Entity {
     public boolean moving;
     public boolean sprinting;
     public int speedBonus;
+    public boolean behindObject = false;
 
     public BufferedImage up0, up1, up2, down0, down1, down2, left1, left2, right1, right2;
     public String direction;

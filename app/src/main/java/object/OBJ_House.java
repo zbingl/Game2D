@@ -9,11 +9,9 @@ import javax.imageio.ImageIO;
 public class OBJ_House extends SuperObject {
 
     public OBJ_House() {
-        super();
+        super(14,8);
         name = "house";
-        dimX = 14;
-        dimY = 8;
-        solidArea = new Rectangle(0, 0 , dimX * 48, (dimY-1) * 48);
+        solidArea = new Rectangle(0, 48*4 , (dimX) * 48, (dimY-5) * 48);
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/res/objects/house.png"));
         } catch (IOException e) {

@@ -25,8 +25,8 @@ Map editor : [Tiled](https://www.mapeditor.org/)
 ~~interaction popup~~\
 ~~object permanence (exiting and entering new areas)~~\
 ~~gradle~~\
+~~render object first if player is behind object~~\
 HUD and UI\
-render object first if player is behind object\
 only rendering objects that are on screen\
 table interaction (adding and removing objects)\
 placing and removing objects\
@@ -34,7 +34,7 @@ inventory
 
 ### Low priority
 add second "player walking sideways" sprite\
-house sprite\
+house sprite (add more details)\
 objects for house and garage\
 Implement JSON map files for Tiled compatibility\
 new textures and tiles

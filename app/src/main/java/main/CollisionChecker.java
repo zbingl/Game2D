@@ -12,6 +12,38 @@ public class CollisionChecker {
         this.gp = gp;
     }
 
+    public void checkIfBehindObject(Entity e) {
+        boolean isBehind = false;
+        for (int i = 0; i < gp.obj.size(); i++) {
+            if (gp.obj.get(i) != null) {
+                SuperObject o = gp.obj.get(i);
+
+                int eSolidAreaX = e.worldX + e.solidArea.x;
+                int eSolidAreaY = e.worldY + e.solidArea.y;
+                
+
+                Rectangle eSolidArea = new Rectangle(
+                    eSolidAreaX, 
+                    eSolidAreaY,
+                    e.solidArea.width,
+                    e.solidArea.height);  
+
+                Rectangle objTrueArea = new Rectangle(
+                    o.worldX + o.trueArea.x, 
+                    o.worldY + o.trueArea.y,
+                    o.trueArea.width,
+                    o.trueArea.height);
+
+                if(objTrueArea.intersects(eSolidArea) && e.worldY < o.worldY + o.solidArea.y && o.collision) {
+                    isBehind = true;
+
+                };
+                
+            }
+        }
+        e.behindObject = isBehind;
+    }
+
     public int checkObject(Entity e, boolean player) {
         int index = 999;
 

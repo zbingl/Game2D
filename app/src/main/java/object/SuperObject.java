@@ -15,8 +15,16 @@ public class SuperObject {
     public int worldX, worldY;
     public int dimX, dimY;
     public Rectangle solidArea;
+    public Rectangle trueArea;
     public int solidAreaDefaultX = 0;
     public int solidAreaDefaultY = 0;
+
+    public SuperObject(int dimX, int dimY) {
+        this.dimX = dimX;
+        this.dimY = dimY;
+        this.trueArea = new Rectangle(0, 0 , dimX * 48, dimY * 48);
+        this.solidArea = new Rectangle(0, 0 , dimX * 48, dimY * 48);
+    }
 
 
 

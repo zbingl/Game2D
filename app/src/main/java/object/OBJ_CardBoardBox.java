@@ -11,13 +11,11 @@ public class OBJ_CardBoardBox extends SuperObject {
     BufferedImage frame2;
 
     public OBJ_CardBoardBox() {
+        super(1,1);
         
         name = "box";
-        dimX = 1;
-        dimY = 1;
         interactable = true;
         collision = true;
-        solidArea = new Rectangle(0, 0 , dimX * 48, dimY * 48);
         
 
         try {

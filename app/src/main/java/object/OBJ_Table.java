@@ -12,10 +12,8 @@ public class OBJ_Table extends SuperObject{
     SuperObject objectOnTable;
 
     public OBJ_Table() {
-        super();
+        super(1,2);
         name = "table";
-        dimX = 1;
-        dimY = 2;
         solidArea = new Rectangle(0, 0 , dimX * 48, dimY * 48 - 16);
 
         try {
@@ -28,9 +26,8 @@ public class OBJ_Table extends SuperObject{
 
 
     public OBJ_Table(SuperObject obj) {
+        super(1,2);
         name = "table";
-        dimX = 1;
-        dimY = 2;
         solidArea = new Rectangle(0, 0 , dimX * 48, dimY * 48 - 16);
 
         try {

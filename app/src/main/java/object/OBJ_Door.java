@@ -18,7 +18,7 @@ public class OBJ_Door extends SuperObject {
 
 
     public OBJ_Door(String direction, GamePanel gp, String mapName, int newPlayerX, int newPlayerY) {
-        super();
+        super(1,2);
         name = "door";
         
         

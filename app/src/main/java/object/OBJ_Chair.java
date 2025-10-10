@@ -7,10 +7,8 @@ import javax.imageio.ImageIO;
 
 public class OBJ_Chair extends SuperObject{
     public OBJ_Chair(String direction) {
-        super();
+        super(1,2);
         name = "chair ";
-        dimX = 1;
-        dimY = 2;
         solidArea = new Rectangle(0, 0 , dimX * 48, dimY * 48);
         if (direction.equals("left")) {
             try {
