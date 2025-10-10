@@ -25,7 +25,7 @@ public class TileManager {
         tile = new Tile[25];
         getTileImages();
         mapList = new TreeMap<String, GameMap>();
-        mapList.put("house main", new GameMap("/res/maps/houseMain.txt", 28, 14, gp));
+        mapList.put("house main", new GameMap("/res/maps/houseMain.txt", 28, 16, gp));
         mapList.put("house bedroom", new GameMap("/res/maps/houseBedroom.txt", 19, 10, gp));
         mapList.put("yard", new GameMap("/res/maps/yard.txt", 50, 50, gp));
 
@@ -118,6 +118,14 @@ public class TileManager {
             tile[20] = new Tile();
             tile[20].image = ImageIO.read(getClass().getResource("/res/tiles/walls/wall.png"));
             tile[20].collision = true;
+
+            tile[21] = new Tile();
+            tile[21].image = ImageIO.read(getClass().getResource("/res/tiles/walls/leftCapUp.png"));
+            tile[21].collision = true;
+
+            tile[22] = new Tile();
+            tile[22].image = ImageIO.read(getClass().getResource("/res/tiles/walls/leftCapDown.png"));
+            tile[22].collision = true;
 
 
 

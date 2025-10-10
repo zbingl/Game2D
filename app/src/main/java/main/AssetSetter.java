@@ -42,29 +42,29 @@ public class AssetSetter {
         if (mapPath.equals("/res/maps/houseMain.txt")) {
  
             //kitchen
-            setObjectAt(new OBJ_CounterTop(), 1, 10, objList);
-            setObjectAt(new OBJ_CounterTop(), 1, 11, objList);
             setObjectAt(new OBJ_CounterTop(), 1, 12, objList);
-            setObjectAt(new OBJ_Sink(), 2, 12, objList);
-            setObjectAt(new OBJ_StoveTop(), 3, 12, objList);
-            setObjectAt(new OBJ_CounterTop(), 4, 12, objList);
-            setObjectAt(new OBJ_CounterTop(), 5, 12, objList);
-            setObjectAt(new OBJ_CounterTop(), 6, 12, objList);
-            setObjectAt(new OBJ_CounterTop(), 7, 12, objList);
+            setObjectAt(new OBJ_CounterTop(), 1, 13, objList);
+            setObjectAt(new OBJ_CounterTop(), 1, 14, objList);
+            setObjectAt(new OBJ_Sink(), 2, 14, objList);
+            setObjectAt(new OBJ_StoveTop(), 3, 14, objList);
+            setObjectAt(new OBJ_CounterTop(), 4, 14, objList);
+            setObjectAt(new OBJ_CounterTop(), 5, 14, objList);
+            setObjectAt(new OBJ_CounterTop(), 6, 14, objList);
+            setObjectAt(new OBJ_CounterTop(), 7, 14, objList);
             //livingroom
-            setObjectAt(new OBJ_Carpet(), 3, 2, objList);
-            setObjectAt(new OBJ_DinnerTable(), 15,8, objList);
-            setObjectAt(new OBJ_Chair("left"), 17,8, objList);
-            setObjectAt(new OBJ_Chair("left"), 17,9, objList);
-            setObjectAt(new OBJ_Chair("right"), 14,8, objList);
-            setObjectAt(new OBJ_Chair("right"), 14,9, objList);
+            setObjectAt(new OBJ_Carpet(), 3, 4, objList);
+            setObjectAt(new OBJ_DinnerTable(), 15,10, objList);
+            setObjectAt(new OBJ_Chair("left"), 17,10, objList);
+            setObjectAt(new OBJ_Chair("left"), 17,11, objList);
+            setObjectAt(new OBJ_Chair("right"), 14,10, objList);
+            setObjectAt(new OBJ_Chair("right"), 14,11, objList);
             //hallway
             //setObjectAt(new OBJ_ShoeRack(), 25, 12, objList);
-            setObjectAt(new OBJ_DoorMat(), 24, 12, objList);
+            setObjectAt(new OBJ_DoorMat(), 24, 14, objList);
 
             //doors
-            setObjectAt(new OBJ_Door("out", gp, "yard", 10, 12 ), 24, 13, objList);
-            setObjectAt(new OBJ_Door("in", gp, "house bedroom", 15, 8 ), 24, 7, objList);
+            setObjectAt(new OBJ_Door("out", gp, "yard", 36,32), 24, 15, objList);
+            setObjectAt(new OBJ_Door("in", gp, "house bedroom", 15, 8 ), 24, 9, objList);
         }
 
         if (mapPath.equals("/res/maps/houseBedroom.txt")) {
@@ -73,14 +73,15 @@ public class AssetSetter {
             setObjectAt(new OBJ_Shelf(), 15, 1, objList);
 
             //doors
-            setObjectAt(new OBJ_Door("out", gp, "house main", 24, 9), 15, 9, objList);
+            setObjectAt(new OBJ_Door("out", gp, "house main", 24, 11), 15, 9, objList);
         }
 
         if (mapPath.equals("/res/maps/yard.txt")) {
-            setObjectAt(new OBJ_House(), 8, 6, objList);
+            //house
+            setObjectAt(new OBJ_House(), 25, 25, objList);
 
             //doors
-            setObjectAt(new OBJ_Door("in", gp, "house main", 24, 12), 10, 10, objList);
+            setObjectAt(new OBJ_Door("in", gp, "house main", 24, 14), 36, 30, objList);
         }
 
         
