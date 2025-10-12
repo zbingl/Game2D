@@ -4,7 +4,6 @@ package object;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import java.awt.Rectangle;
 
 public class OBJ_DinnerTable extends SuperObject {
     public OBJ_DinnerTable() {

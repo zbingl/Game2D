@@ -1,19 +1,22 @@
 package music;
 
 import javax.sound.sampled.*;
-import java.io.File;
+import java.io.InputStream;
 
 public class MusicPlayer {
     private Thread musicThread;
     private Clip clip;
     public boolean playing = false;
 
-
     public MusicPlayer(String songPath) {
         musicThread = new Thread(() -> {
             try {
-                File soundFile = new File(songPath);
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundFile);
+                InputStream is = getClass().getResourceAsStream(songPath);
+                if (is == null) {
+                    throw new IllegalArgumentException("Could not find resource: " + songPath);
+                }
+
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(is);
                 clip = AudioSystem.getClip();
                 clip.open(audioStream);
             } catch (Exception e) {
@@ -26,8 +29,8 @@ public class MusicPlayer {
     public void play() {
         playing = true;
         System.out.println("radio on");
-        
         if (clip != null && !clip.isRunning()) {
+            //clip.setFramePosition(0); // Restart from beginning each time
             clip.start();
         }
     }
@@ -40,3 +43,4 @@ public class MusicPlayer {
         }
     }
 }
+

@@ -12,40 +12,10 @@ public class CollisionChecker {
         this.gp = gp;
     }
 
-    public void checkIfBehindObject(Entity e) {
-        boolean isBehind = false;
-        for (int i = 0; i < gp.obj.size(); i++) {
-            if (gp.obj.get(i) != null) {
-                SuperObject o = gp.obj.get(i);
-
-                int eSolidAreaX = e.worldX + e.solidArea.x;
-                int eSolidAreaY = e.worldY + e.solidArea.y;
-                
-
-                Rectangle eSolidArea = new Rectangle(
-                    eSolidAreaX, 
-                    eSolidAreaY,
-                    e.solidArea.width,
-                    e.solidArea.height);  
-
-                Rectangle objTrueArea = new Rectangle(
-                    o.worldX + o.trueArea.x, 
-                    o.worldY + o.trueArea.y,
-                    o.trueArea.width,
-                    o.trueArea.height);
-
-                if(objTrueArea.intersects(eSolidArea) && e.worldY < o.worldY + o.solidArea.y && o.collision) {
-                    isBehind = true;
-
-                };
-                
-            }
-        }
-        e.behindObject = isBehind;
-    }
 
     public int checkObject(Entity e, boolean player) {
         int index = 999;
+        boolean isBehind = false;
 
         for (int i = 0; i < gp.obj.size(); i++) {
             if (gp.obj.get(i) != null) {
@@ -54,6 +24,9 @@ public class CollisionChecker {
 
                 int eSolidAreaX = e.worldX + e.solidArea.x;
                 int eSolidAreaY = e.worldY + e.solidArea.y;
+
+                int eTrueAreaX = e.worldX + e.trueArea.x;
+                int eTrueAreaY = e.worldY + e.trueArea.y;
 
                 Rectangle eSolidArea = new Rectangle(
                     eSolidAreaX, 
@@ -66,6 +39,37 @@ public class CollisionChecker {
                     o.worldY + o.solidArea.y,
                     o.solidArea.width,
                     o.solidArea.height);
+
+                Rectangle eTrueArea = new Rectangle(
+                    eTrueAreaX, 
+                    eTrueAreaY - 48,
+                    e.trueArea.width,
+                    e.trueArea.height); 
+
+                Rectangle objTrueArea = new Rectangle(
+                    o.worldX, 
+                    o.worldY,
+                    o.trueArea.width,
+                    o.trueArea.height);
+
+                if(objTrueArea.intersects(eTrueArea) && e.worldY < o.worldY + o.solidArea.y && o.collision) {
+                    System.out.println("collision = " + o.collision);
+                    System.out.println("behind " + o.toString());
+
+                    System.out.println("object: ");
+                    System.out.println(objTrueArea.x);
+                    System.out.println(objTrueArea.y);
+                    System.out.println(objTrueArea.width);
+                    System.out.println(objTrueArea.height);
+
+                    System.out.println("player: ");
+                    System.out.println(eTrueArea.x);
+                    System.out.println(eTrueArea.y);
+                    System.out.println(eTrueArea.width);
+                    System.out.println(eTrueArea.height);
+
+                    isBehind = true;
+                };
 
 
                 switch (e.direction) {
@@ -117,6 +121,7 @@ public class CollisionChecker {
 
             }
         }
+        e.behindObject = isBehind;
         return index;
     }
 

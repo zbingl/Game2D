@@ -27,6 +27,7 @@ public class Player extends Entity {
         screenY = gp.screenHeight/2 - gp.tileSize/2;
 
         solidArea = new Rectangle(8, 16, 32, 32);
+        trueArea = new Rectangle(0,0, 48, 48*2);
 
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
@@ -69,8 +70,6 @@ public class Player extends Entity {
     }
 
     public void update() {
-
-        gp.cc.checkIfBehindObject(this);
 
         if (keyH.eTyped && currObject < gp.obj.size() ){
             if (gp.obj.get(currObject).interactable) {

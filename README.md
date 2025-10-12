@@ -26,8 +26,8 @@ Map editor : [Tiled](https://www.mapeditor.org/)
 ~~object permanence (exiting and entering new areas)~~\
 ~~gradle~~\
 ~~render object first if player is behind object~~\
+~~only rendering objects that are on screen~~\
 HUD and UI\
-only rendering objects that are on screen\
 table interaction (adding and removing objects)\
 placing and removing objects\
 inventory

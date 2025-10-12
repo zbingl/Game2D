@@ -18,7 +18,6 @@ public class OBJ_Door extends SuperObject {
 
 
     public OBJ_Door(String direction, GamePanel gp, String mapName, int newPlayerX, int newPlayerY) {
-        super(1,2);
         name = "door";
         
         
@@ -34,6 +33,7 @@ public class OBJ_Door extends SuperObject {
             image = ImageIO.read(getClass().getResourceAsStream("/res/objects/doorEnterance.png"));
             dimX = 1;
             dimY = 2;
+            trueArea = new Rectangle(0, 0 , dimX * 48, dimY * 48);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -43,6 +43,7 @@ public class OBJ_Door extends SuperObject {
             image = ImageIO.read(getClass().getResourceAsStream("/res/objects/doorExit(1x1).png"));
             dimX = 1;
             dimY = 1;
+            trueArea = new Rectangle(0, 0 , dimX * 48, dimY * 48);
 
         } catch (IOException e) {
             e.printStackTrace();

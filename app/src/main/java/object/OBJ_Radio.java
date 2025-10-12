@@ -1,6 +1,5 @@
 package object;
 
-import java.awt.Rectangle;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -18,7 +17,7 @@ public class OBJ_Radio extends SuperObject{
 
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/res/objects/radio.png"));
-            player = new MusicPlayer("/res/music/Dire Straits - Sultans Of Swing.wav");
+            player = new MusicPlayer("/res/music/sultansOfSwing.wav");
         } catch (IOException e) {
             e.printStackTrace();
         }

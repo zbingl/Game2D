@@ -26,6 +26,10 @@ public class SuperObject {
         this.solidArea = new Rectangle(0, 0 , dimX * 48, dimY * 48);
     }
 
+    public SuperObject() {
+        
+    } 
+
 
 
     public void draw(Graphics2D g2, GamePanel gp) {
