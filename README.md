@@ -4,16 +4,16 @@
 Pixelart: [piskel.com](https://www.piskelapp.com/)\
 Map editor : [Tiled](https://www.mapeditor.org/)
 
-![alt text](src/res/objects/doubleBed(3x4).png)
-![alt text](src/res/objects/CasetteComputer.png)
-![alt text](src/res/objects/shelf(2x3).png)
-![alt text](src/res/objects/chairSideLeft(1x2).png)
-![alt text](src/res/player/down0.png)
-![alt text](src/res/objects/table.png)
-![alt text](src/res/objects/radioBig.png)
-![alt text](src/res/objects/radio.png)
+![alt text](app/src/main/resources/res/objects/doubleBed(3x4).png)
+![alt text](app/src/main/resources/res/objects/CasetteComputer.png)
+![alt text](app/src/main/resources/res/objects/shelf(2x3).png)
+![alt text](app/src/main/resources/res/objects/chairSideLeft(1x2).png)
+![alt text](app/src/main/resources/res/player/down0.png)
+![alt text](app/src/main/resources/res/objects/table.png)
+![alt text](app/src/main/resources/res/objects/radioBig.png)
+![alt text](app/src/main/resources/res/objects/radio.png)
 ![alt text](PixelArtWIP/bush.png)
-![alt text](src/res/objects/computer1.png)
+![alt text](app/src/main/resources/res/objects/computer1.png)
 
 ## TODO
 ### Hight priority
