@@ -10,8 +10,6 @@ public class Main {
         window.setResizable(false);
         window.setTitle("Game");
 
-        
-
         GamePanel gamePanel = new GamePanel();
         System.out.println(gamePanel.tileM.currMapName);
         window.add(gamePanel);

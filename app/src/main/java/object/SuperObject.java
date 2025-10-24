@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 
 import main.GamePanel;
 
-public class SuperObject {
+public abstract class SuperObject {
 
     public BufferedImage image;
     public String name;
@@ -27,7 +27,6 @@ public class SuperObject {
     }
 
     public SuperObject() {
-        
     } 
 
 
@@ -45,7 +44,6 @@ public class SuperObject {
     }
     
     public void interact() {
-        
     }
 
     public String toString() {

@@ -8,6 +8,9 @@ public class MusicPlayer {
     private Clip clip;
     public boolean playing = false;
 
+    public String onMessage = "on";
+    public String offMessage = "off";
+
     public MusicPlayer(String songPath) {
         musicThread = new Thread(() -> {
             try {
@@ -28,7 +31,7 @@ public class MusicPlayer {
 
     public void play() {
         playing = true;
-        System.out.println("radio on");
+        System.out.println(onMessage);
         if (clip != null && !clip.isRunning()) {
             //clip.setFramePosition(0); // Restart from beginning each time
             clip.start();
@@ -37,10 +40,18 @@ public class MusicPlayer {
 
     public void stop() {
         playing = false;
-        System.out.println("radio off");
+        System.out.println(offMessage);
         if (clip != null && clip.isRunning()) {
             clip.stop();
         }
+    }
+
+    public void setOnMessage(String message) {
+        onMessage = message;
+    }
+
+    public void setOffMessage(String message) {
+        offMessage = message;
     }
 }
 

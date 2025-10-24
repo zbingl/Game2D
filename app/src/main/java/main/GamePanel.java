@@ -21,26 +21,26 @@ public class GamePanel extends JPanel implements Runnable {
 
     final int originalTileSize = 16; // 16 x 16 px
     final int scale = 3;
+    public int maxWorldCol = 16;
+    public int maxWorldRow = 12;
+    int FPS = 60;
 
     public final int tileSize = originalTileSize * scale; // 48 x 48 px
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     public final int screenWidth = (int) screenSize.getWidth();
     public final int screenHeight = (int) screenSize.getHeight();;
 
-    // These must be same as the map for the map to load properly
-    public int maxWorldCol = 16;
-    public int maxWorldRow = 12;
 
+    
 
-    int FPS = 60;
-
-    KeyHandler keyH = new KeyHandler();
+    
     Thread gameThread;
+
+    public KeyHandler keyH = new KeyHandler();
     public CollisionChecker cc = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this, keyH);
     public ArrayList<SuperObject> obj = new ArrayList<>();
-
     public TileManager tileM = new TileManager(this);
 
 

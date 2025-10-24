@@ -28,10 +28,10 @@ public class GameMap {
             System.out.println("empty");
         }
         
-        loadMap();
+        loadMapFile();
     }
 
-    private void loadMap() {
+    private void loadMapFile() {
         mapTileNum = new int[worldCol][worldrow];
         try {
             InputStream is = getClass().getResourceAsStream(mapPath);
@@ -43,11 +43,8 @@ public class GameMap {
             while ( col < worldCol && row < worldrow) {
                 String line = br.readLine();
 
-
                 while (col < worldCol) {
-                    
                     String numbers[] = line.split(" ");
-
                     int num;
                      
                     try {
@@ -55,8 +52,6 @@ public class GameMap {
                     } catch (Exception e) {
                         num = 4;
                     }
-
-                    //int num = Integer.parseInt(numbers[col]);
 
                     mapTileNum[col][row] = num;
                     col++;

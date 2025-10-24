@@ -53,21 +53,6 @@ public class CollisionChecker {
                     o.trueArea.height);
 
                 if(objTrueArea.intersects(eTrueArea) && e.worldY < o.worldY + o.solidArea.y && o.collision) {
-                    System.out.println("collision = " + o.collision);
-                    System.out.println("behind " + o.toString());
-
-                    System.out.println("object: ");
-                    System.out.println(objTrueArea.x);
-                    System.out.println(objTrueArea.y);
-                    System.out.println(objTrueArea.width);
-                    System.out.println(objTrueArea.height);
-
-                    System.out.println("player: ");
-                    System.out.println(eTrueArea.x);
-                    System.out.println(eTrueArea.y);
-                    System.out.println(eTrueArea.width);
-                    System.out.println(eTrueArea.height);
-
                     isBehind = true;
                 };
 
