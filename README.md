@@ -1,6 +1,6 @@
 # 2DGame
 
-2D game made by following the instructions in the playlist ["How to make a 2D game in Java"](https://www.youtube.com/playlist?list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq) by youtuber RyiSnow.\
+2D game is made by me, with the help of the playlist ["How to make a 2D game in Java"](https://www.youtube.com/playlist?list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq) by youtuber RyiSnow.\
 Pixelart: [piskel.com](https://www.piskelapp.com/)\
 Map editor : [Tiled](https://www.mapeditor.org/)
 
