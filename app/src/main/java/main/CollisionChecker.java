@@ -3,6 +3,7 @@ package main;
 import java.awt.Rectangle;
 
 import entity.Entity;
+import entity.Player;
 import object.SuperObject;
 
 public class CollisionChecker {
@@ -13,9 +14,11 @@ public class CollisionChecker {
     }
 
 
-    public int checkObject(Entity e, boolean player) {
+    public int checkObject(Entity e) {
         int index = 999;
         boolean isBehind = false;
+        boolean isPlayer = e instanceof Player;
+
 
         for (int i = 0; i < gp.obj.size(); i++) {
             if (gp.obj.get(i) != null) {
@@ -64,7 +67,7 @@ public class CollisionChecker {
                             if (o.collision) {
                                 e.collisionOn = true;
                             }
-                            if (player) {
+                            if (isPlayer) {
                                 index = i;
                             }
                         }
@@ -75,7 +78,7 @@ public class CollisionChecker {
                             if (o.collision) {
                                 e.collisionOn = true;
                             }
-                            if (player) {
+                            if (isPlayer) {
                                 index = i;
                             }
                         }
@@ -86,7 +89,7 @@ public class CollisionChecker {
                             if (o.collision) {
                                 e.collisionOn = true;
                             }
-                            if (player) {
+                            if (isPlayer) {
                                 index = i;
                             }
                         }
@@ -97,7 +100,7 @@ public class CollisionChecker {
                             if (o.collision) {
                                 e.collisionOn = true;
                             }
-                            if (player) {
+                            if (isPlayer) {
                                 index = i;
                             }
                         }

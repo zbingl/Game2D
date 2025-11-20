@@ -42,6 +42,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this, keyH);
     public ArrayList<SuperObject> obj = new ArrayList<>();
     public TileManager tileM = new TileManager(this);
+    public PlayerHUD pHUD = new PlayerHUD(this);
 
 
     public GamePanel() {
@@ -110,6 +111,8 @@ public class GamePanel extends JPanel implements Runnable {
             }
             player.draw(g2);
         }
+        
+        pHUD.draw(g2);
         
         g2.dispose();
     }

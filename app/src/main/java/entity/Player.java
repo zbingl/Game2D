@@ -93,28 +93,28 @@ public class Player extends Entity {
             if (keyH.upPressed) {
                 direction = "up";
                 gp.cc.checkTile(this);
-                currObject = gp.cc.checkObject(this, true);
+                currObject = gp.cc.checkObject(this);
                 worldY -= !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
             if (keyH.downPressed) {
                 direction = "down";
                 gp.cc.checkTile(this);
-                currObject = gp.cc.checkObject(this, true);
+                currObject = gp.cc.checkObject(this);
                 worldY += !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
             if (keyH.leftPressed) {
                 direction = "left";
                 gp.cc.checkTile(this);
-                currObject = gp.cc.checkObject(this, true);
+                currObject = gp.cc.checkObject(this);
                 worldX -= !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
             if (keyH.rightPressed) {
                 direction = "right";
                 gp.cc.checkTile(this);
-                currObject = gp.cc.checkObject(this, true);
+                currObject = gp.cc.checkObject(this);
                 worldX += !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
