@@ -8,10 +8,11 @@ import javax.imageio.ImageIO;
 public class PlayerHUD {
     GamePanel gp;
 
-    boolean inventory = true;
+    public boolean inventory = true;
     boolean menu = false;
     String inventoryImagePath = "/res/hud/InventoryBar.png";
     public BufferedImage inventoryImage;
+    int inventoryBarWidth = 360;
 
 
     public PlayerHUD(GamePanel gp) {
@@ -23,8 +24,12 @@ public class PlayerHUD {
             }
     }
 
+    public void toggleInventory() {
+        this.inventory = !this.inventory;
+    }
+
     public void drawInventory(Graphics2D g2) {
-        g2.drawImage(inventoryImage, 600, gp.screenHeight - 180, 320 * 2, 32 * 2, null);
+        g2.drawImage(inventoryImage, 600, 5 * gp.screenHeight / 6, (gp.screenWidth - inventoryBarWidth)/2 , 32 * 2, null);
     }
 
     public void drawMenu(Graphics2D g2) {

@@ -5,8 +5,14 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 
-    public boolean upPressed, downPressed, rightPressed, leftPressed, shiftPressed;
-    public boolean ePressed, eTyped; // eTyped = true only once per press
+    private GamePanel gp;
+
+    public KeyHandler(GamePanel gp) {
+        this.gp = gp;
+    }
+
+    public boolean upPressed, downPressed, rightPressed, leftPressed, shiftPressed, tabPressed;
+    public boolean ePressed, eTyped, tabTyped; // eTyped = true only once per press
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -28,6 +34,13 @@ public class KeyHandler implements KeyListener {
             }
             ePressed = true;
         }
+
+        if (code == KeyEvent.VK_I) {
+            if (!tabPressed) {
+                tabTyped = true;   // mark this as a "new press"
+            }
+            tabPressed = true;
+        }
     }
 
     @Override
@@ -43,12 +56,25 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_E) {
             ePressed = false;
         }
+
+        if (code == KeyEvent.VK_I) {
+            tabPressed = false;
+        }
     }
 
-    // Call this from your game update loop
+    // Abstract this
+
     public boolean consumeETyped() {
         if (eTyped) {
-            eTyped = false; // reset after using
+            eTyped = false;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean consumeTABTyped() {
+        if (tabTyped) {
+            tabTyped = false;
             return true;
         }
         return false;

@@ -74,9 +74,16 @@ public class Player extends Entity {
         if (keyH.eTyped && currObject < gp.obj.size() ){
             if (gp.obj.get(currObject).interactable) {
                 gp.obj.get(currObject).interact(); 
-            }    
+            }
+            keyH.consumeETyped();    
         }
-        keyH.consumeETyped();
+        
+
+        if (keyH.tabTyped) {
+            gp.pHUD.toggleInventory();
+            System.out.println(gp.pHUD.inventory);
+            keyH.consumeTABTyped();
+        }
 
         if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
             moving = true;
