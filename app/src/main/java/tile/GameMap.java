@@ -13,7 +13,7 @@ public class GameMap {
     int worldCol;
     int worldrow;
     String mapPath;
-    ArrayList<SuperObject> objectList;
+    public ArrayList<SuperObject> objectList;
     GamePanel gp;
 
     public GameMap(String mapPath, int worldCol, int worldRow, GamePanel gp) {

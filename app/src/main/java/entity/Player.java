@@ -2,6 +2,7 @@ package entity;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -62,7 +63,7 @@ public class Player extends Entity {
             right1 = ImageIO.read(getClass().getResourceAsStream("/res/player/right0.png"));
             right2 = ImageIO.read(getClass().getResourceAsStream("/res/player/right1.png"));
 
-            interactionMessage = ImageIO.read(getClass().getResourceAsStream("/res/hud/interactMessage.png"));
+
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,14 +76,13 @@ public class Player extends Entity {
             if (gp.obj.get(currObject).interactable) {
                 gp.obj.get(currObject).interact(); 
             }
-            keyH.consumeETyped();    
+            keyH.consumeTyped(KeyEvent.VK_E);    
         }
         
 
         if (keyH.tabTyped) {
             gp.pHUD.toggleInventory();
-            System.out.println(gp.pHUD.inventory);
-            keyH.consumeTABTyped();
+            keyH.consumeTyped(KeyEvent.VK_TAB);  
         }
 
         if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
@@ -208,20 +208,11 @@ public class Player extends Entity {
 
         if (currObject < gp.obj.size() && gp.obj.get(currObject) != null) {
             if (gp.obj.get(currObject).interactable) {
-                drawInderactionMessage(g2);
+                gp.pHUD.drawInderactionMessage(g2);
             }
         }
         
 
-    }
-
-    public void drawInderactionMessage(Graphics2D g2) {
-        g2.drawImage(interactionMessage, 
-        screenX - 1 * gp.tileSize / 3, 
-        screenY - 8 * gp.tileSize / 3, 
-        gp.tileSize * dimX * 2, 
-        gp.tileSize * dimY, 
-        null);
     }
     
 }

@@ -16,7 +16,7 @@ Map editor : [Tiled](https://www.mapeditor.org/)
 ![alt text](app/src/main/resources/res/objects/computer1.png)
 
 ## TODO
-### Hight priority
+### High priority
 ~~Set to appropriate values to maxWorldRow and maxWorldCol after loading map file in constructor~~\
 ~~objects~~\
 ~~collision~~\

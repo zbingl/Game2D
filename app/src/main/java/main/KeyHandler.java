@@ -2,17 +2,26 @@ package main;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashMap;
 
 public class KeyHandler implements KeyListener {
 
     private GamePanel gp;
+    public HashMap<Integer, Boolean> typedMap;
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
+        typedMap = new HashMap<>();
+
+        typedMap.put(KeyEvent.VK_E, false);
+        typedMap.put(KeyEvent.VK_TAB, false);
+        
     }
 
     public boolean upPressed, downPressed, rightPressed, leftPressed, shiftPressed, tabPressed;
     public boolean ePressed, eTyped, tabTyped; // eTyped = true only once per press
+
+    
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -30,14 +39,14 @@ public class KeyHandler implements KeyListener {
 
         if (code == KeyEvent.VK_E) {
             if (!ePressed) {
-                eTyped = true;   // mark this as a "new press"
+                typedMap.put(code, true); 
             }
             ePressed = true;
         }
 
         if (code == KeyEvent.VK_I) {
             if (!tabPressed) {
-                tabTyped = true;   // mark this as a "new press"
+                typedMap.put(code, true);   
             }
             tabPressed = true;
         }
@@ -62,19 +71,10 @@ public class KeyHandler implements KeyListener {
         }
     }
 
-    // Abstract this
-
-    public boolean consumeETyped() {
-        if (eTyped) {
-            eTyped = false;
-            return true;
-        }
-        return false;
-    }
-
-    public boolean consumeTABTyped() {
-        if (tabTyped) {
-            tabTyped = false;
+    public boolean consumeTyped(int keycode) {
+        boolean typed = typedMap.get(keycode);
+        if (typed) {
+            typedMap.put(keycode, false);
             return true;
         }
         return false;
