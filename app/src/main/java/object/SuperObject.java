@@ -18,6 +18,7 @@ public abstract class SuperObject {
     public Rectangle trueArea;
     public int solidAreaDefaultX = 0;
     public int solidAreaDefaultY = 0;
+    public boolean pickupable = false;
 
     public SuperObject(int dimX, int dimY) {
         this.dimX = dimX;

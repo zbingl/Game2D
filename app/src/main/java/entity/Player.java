@@ -71,21 +71,41 @@ public class Player extends Entity {
     }
 
     public void update() {
+        int upCode = KeyEvent.VK_W;
+        int downCode = KeyEvent.VK_S;
+        int leftCode = KeyEvent.VK_A;
+        int rightCode = KeyEvent.VK_D;
+        int inventoryCode = KeyEvent.VK_I;
+        int interactCode = KeyEvent.VK_E;
+        int pickupCode = KeyEvent.VK_P;
 
-        if (keyH.eTyped && currObject < gp.obj.size() ){
+        boolean dirKeysPressed = keyH.pressedMap.get(upCode) || keyH.pressedMap.get(downCode) || keyH.pressedMap.get(leftCode) || keyH.pressedMap.get(rightCode);
+
+
+        //Bug where consumable keys stack when not causing any effect
+
+        if (keyH.typedMap.get(interactCode) && currObject < gp.obj.size() ){
             if (gp.obj.get(currObject).interactable) {
                 gp.obj.get(currObject).interact(); 
             }
-            keyH.consumeTyped(KeyEvent.VK_E);    
+            keyH.consumeTyped(interactCode);    
         }
         
 
-        if (keyH.tabTyped) {
+        if (keyH.typedMap.get(inventoryCode)) {
             gp.pHUD.toggleInventory();
-            keyH.consumeTyped(KeyEvent.VK_TAB);  
+            keyH.consumeTyped(inventoryCode);  
         }
 
-        if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
+        if (keyH.typedMap.get(pickupCode) && currObject < gp.obj.size()) {
+            if (gp.obj.get(currObject).pickupable) {
+                gp.pInv.pickup(gp.obj.get(currObject));
+            }
+            currObject = 999;
+            keyH.consumeTyped(pickupCode);  
+        }
+
+        if (dirKeysPressed) {
             moving = true;
             sprinting = false;
             if (keyH.shiftPressed){
@@ -97,28 +117,28 @@ public class Player extends Entity {
             collisionOn = false;
             
 
-            if (keyH.upPressed) {
+            if (keyH.pressedMap.get(upCode)) {
                 direction = "up";
                 gp.cc.checkTile(this);
                 currObject = gp.cc.checkObject(this);
                 worldY -= !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
-            if (keyH.downPressed) {
+            if (keyH.pressedMap.get(downCode)) {
                 direction = "down";
                 gp.cc.checkTile(this);
                 currObject = gp.cc.checkObject(this);
                 worldY += !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
-            if (keyH.leftPressed) {
+            if (keyH.pressedMap.get(leftCode)) {
                 direction = "left";
                 gp.cc.checkTile(this);
                 currObject = gp.cc.checkObject(this);
                 worldX -= !collisionOn ? speed + speedBonus : 0;
                 collisionOn = false;
             }
-            if (keyH.rightPressed) {
+            if (keyH.pressedMap.get(rightCode)) {
                 direction = "right";
                 gp.cc.checkTile(this);
                 currObject = gp.cc.checkObject(this);

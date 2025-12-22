@@ -25,6 +25,7 @@ public class OBJ_Chair extends SuperObject{
         }
         
         collision = true;
+        pickupable = true;
     }
 
 }

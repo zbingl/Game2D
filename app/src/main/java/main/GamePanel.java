@@ -43,6 +43,7 @@ public class GamePanel extends JPanel implements Runnable {
     public ArrayList<SuperObject> obj = new ArrayList<>();
     public TileManager tileM = new TileManager(this);
     public PlayerHUD pHUD = new PlayerHUD(this);
+    public PlayerInventory pInv = new PlayerInventory(this);
 
 
     public GamePanel() {

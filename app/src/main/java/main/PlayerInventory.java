@@ -17,10 +17,10 @@ public class PlayerInventory {
     public void pickup(SuperObject obj) {
         if (objectList.size() < 8) {
             TileManager tilemanager = gp.tileM;
-            ArrayList<SuperObject> worldobjs = tilemanager.mapList.get(tilemanager.currMapName).objectList;
+            ArrayList<SuperObject> worldObjs = tilemanager.mapList.get(tilemanager.currMapName).objectList;
 
             objectList.add(obj);
-            worldobjs.remove(obj);
+            worldObjs.remove(obj);
         }
     }
 

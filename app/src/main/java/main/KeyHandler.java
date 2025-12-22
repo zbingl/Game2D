@@ -8,21 +8,30 @@ public class KeyHandler implements KeyListener {
 
     private GamePanel gp;
     public HashMap<Integer, Boolean> typedMap;
+    public HashMap<Integer, Boolean> pressedMap;
+    public boolean upPressed, downPressed, rightPressed, leftPressed, shiftPressed, iPressed, ePressed, pPressed;
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
-        typedMap = new HashMap<>();
 
+        typedMap = new HashMap<>();
         typedMap.put(KeyEvent.VK_E, false);
-        typedMap.put(KeyEvent.VK_TAB, false);
+        typedMap.put(KeyEvent.VK_I, false);
+        typedMap.put(KeyEvent.VK_P, false);
+
+        pressedMap = new HashMap<>();
+        pressedMap.put(KeyEvent.VK_W, false);
+        pressedMap.put(KeyEvent.VK_A, false);
+        pressedMap.put(KeyEvent.VK_S, false);
+        pressedMap.put(KeyEvent.VK_D, false);
+        pressedMap.put(KeyEvent.VK_SHIFT, false);
+        pressedMap.put(KeyEvent.VK_I, false);
+        pressedMap.put(KeyEvent.VK_E, false);
+        pressedMap.put(KeyEvent.VK_P, false);
         
     }
 
-    public boolean upPressed, downPressed, rightPressed, leftPressed, shiftPressed, tabPressed;
-    public boolean ePressed, eTyped, tabTyped; // eTyped = true only once per press
-
     
-
     @Override
     public void keyTyped(KeyEvent e) {
     }
@@ -31,24 +40,9 @@ public class KeyHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
 
-        if (code == KeyEvent.VK_W) upPressed = true;
-        if (code == KeyEvent.VK_A) leftPressed = true;
-        if (code == KeyEvent.VK_S) downPressed = true;
-        if (code == KeyEvent.VK_D) rightPressed = true;
-        if (code == KeyEvent.VK_SHIFT) shiftPressed = true;
-
-        if (code == KeyEvent.VK_E) {
-            if (!ePressed) {
-                typedMap.put(code, true); 
-            }
-            ePressed = true;
-        }
-
-        if (code == KeyEvent.VK_I) {
-            if (!tabPressed) {
-                typedMap.put(code, true);   
-            }
-            tabPressed = true;
+        if (pressedMap.containsKey(code)) {
+            consumableTyped(code);
+            pressedMap.put(code, true);
         }
     }
 
@@ -56,25 +50,24 @@ public class KeyHandler implements KeyListener {
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();
 
-        if (code == KeyEvent.VK_W) upPressed = false;
-        if (code == KeyEvent.VK_A) leftPressed = false;
-        if (code == KeyEvent.VK_S) downPressed = false;
-        if (code == KeyEvent.VK_D) rightPressed = false;
-        if (code == KeyEvent.VK_SHIFT) shiftPressed = false;
-
-        if (code == KeyEvent.VK_E) {
-            ePressed = false;
-        }
-
-        if (code == KeyEvent.VK_I) {
-            tabPressed = false;
+        if (pressedMap.containsKey(code)) {
+            pressedMap.put(code, false);
         }
     }
 
-    public boolean consumeTyped(int keycode) {
-        boolean typed = typedMap.get(keycode);
+    public void consumableTyped(int code) {
+        if (typedMap.containsKey(code)) {
+            if (!pressedMap.get(code)) {
+                typedMap.put(code, true); 
+            }
+            ePressed = true;
+        }
+    }
+
+    public boolean consumeTyped(int code) {
+        boolean typed = typedMap.get(code);
         if (typed) {
-            typedMap.put(keycode, false);
+            typedMap.put(code, false);
             return true;
         }
         return false;

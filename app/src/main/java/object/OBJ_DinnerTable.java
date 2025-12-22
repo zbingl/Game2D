@@ -16,5 +16,6 @@ public class OBJ_DinnerTable extends SuperObject {
         }
 
         collision = true;
+        pickupable = true;
     }
 }
