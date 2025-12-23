@@ -10,6 +10,8 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
+import main.PlayerInventory;
+import object.SuperObject;
 
 public class Player extends Entity {
 
@@ -19,6 +21,17 @@ public class Player extends Entity {
     public final int screenY;
     public int currObject = 999;
     public BufferedImage interactionMessage;
+
+    int upCode = KeyEvent.VK_W;
+    int downCode = KeyEvent.VK_S;
+    int leftCode = KeyEvent.VK_A;
+    int rightCode = KeyEvent.VK_D;
+    int sprintCode = KeyEvent.VK_SHIFT;
+    int inventoryCode = KeyEvent.VK_I;
+    int interactCode = KeyEvent.VK_E;
+    int pickupCode = KeyEvent.VK_P;
+    int placeCode = KeyEvent.VK_O;
+    
 
     public Player(GamePanel gp, KeyHandler keyH2) {
         this.gp = gp;
@@ -70,50 +83,21 @@ public class Player extends Entity {
         }
     }
 
-    public void update() {
-        int upCode = KeyEvent.VK_W;
-        int downCode = KeyEvent.VK_S;
-        int leftCode = KeyEvent.VK_A;
-        int rightCode = KeyEvent.VK_D;
-        int inventoryCode = KeyEvent.VK_I;
-        int interactCode = KeyEvent.VK_E;
-        int pickupCode = KeyEvent.VK_P;
-
-        boolean dirKeysPressed = keyH.pressedMap.get(upCode) || keyH.pressedMap.get(downCode) || keyH.pressedMap.get(leftCode) || keyH.pressedMap.get(rightCode);
-
-
-        //Bug where consumable keys stack when not causing any effect
-
-        if (keyH.typedMap.get(interactCode) && currObject < gp.obj.size() ){
-            if (gp.obj.get(currObject).interactable) {
-                gp.obj.get(currObject).interact(); 
-            }
-            keyH.consumeTyped(interactCode);    
-        }
+    public void updateMovement() {
+        boolean dirKeysPressed = 
+            keyH.pressedMap.get(upCode) || 
+            keyH.pressedMap.get(downCode) || 
+            keyH.pressedMap.get(leftCode) || 
+            keyH.pressedMap.get(rightCode);
         
-
-        if (keyH.typedMap.get(inventoryCode)) {
-            gp.pHUD.toggleInventory();
-            keyH.consumeTyped(inventoryCode);  
-        }
-
-        if (keyH.typedMap.get(pickupCode) && currObject < gp.obj.size()) {
-            if (gp.obj.get(currObject).pickupable) {
-                gp.pInv.pickup(gp.obj.get(currObject));
-            }
-            currObject = 999;
-            keyH.consumeTyped(pickupCode);  
-        }
-
         if (dirKeysPressed) {
             moving = true;
             sprinting = false;
-            if (keyH.shiftPressed){
+            if (keyH.pressedMap.get(sprintCode)){
                 sprinting = true;
             }
 
             speedBonus = sprinting ? speed : 0;
-
             collisionOn = false;
             
 
@@ -157,6 +141,66 @@ public class Player extends Entity {
         } else {
             moving = false;
         }
+    }
+
+    public void updateInteract() {
+        if (keyH.typedMap.get(interactCode) && currObject < gp.obj.size() ){      
+            if (gp.obj.get(currObject).interactable) {
+                gp.obj.get(currObject).interact(); 
+            }   
+        }
+    }
+
+    public void updateToggleInventory() {
+        if (keyH.typedMap.get(inventoryCode)) {
+            gp.pHUD.toggleInventory(); 
+        }
+    }
+
+    public void updatePickupObject() {
+        if (keyH.typedMap.get(pickupCode) && currObject < gp.obj.size()) {
+            if (gp.obj.get(currObject).pickupable) {
+                gp.pInv.pickup(gp.obj.get(currObject));
+            }  
+        }
+    }
+
+    public void updatePlaceObject() {
+        PlayerInventory pInv = gp.pInv;
+        if (keyH.typedMap.get(placeCode) && pInv.getNbrOfObjectsStored() > 0) {
+            SuperObject objectToPlace = pInv.getFirstObject();
+
+            int newX = worldX - worldX % gp.tileSize;
+            int newY = worldY - worldY % gp.tileSize;
+
+            switch (direction) {
+                case "up":
+                    newY-=objectToPlace.dimY*gp.tileSize;
+                case "down":
+                    newY+=gp.tileSize;
+                case "left":
+                    newX-=objectToPlace.dimX*gp.tileSize;
+                case "right":
+                    newX+=gp.tileSize;
+                default:
+                    break;
+            }
+
+            pInv.place(objectToPlace, newX, newY);
+        } 
+    }
+
+    public void update() {
+        
+        updateInteract();
+        updateToggleInventory();
+        updatePickupObject();
+        updatePlaceObject();
+
+        updateMovement();
+
+        keyH.consumeAllTyped();
+    
     }
 
     public void draw(Graphics2D g2) {

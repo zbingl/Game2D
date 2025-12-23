@@ -9,7 +9,6 @@ public class KeyHandler implements KeyListener {
     private GamePanel gp;
     public HashMap<Integer, Boolean> typedMap;
     public HashMap<Integer, Boolean> pressedMap;
-    public boolean upPressed, downPressed, rightPressed, leftPressed, shiftPressed, iPressed, ePressed, pPressed;
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
@@ -18,6 +17,7 @@ public class KeyHandler implements KeyListener {
         typedMap.put(KeyEvent.VK_E, false);
         typedMap.put(KeyEvent.VK_I, false);
         typedMap.put(KeyEvent.VK_P, false);
+        typedMap.put(KeyEvent.VK_O, false);
 
         pressedMap = new HashMap<>();
         pressedMap.put(KeyEvent.VK_W, false);
@@ -25,9 +25,11 @@ public class KeyHandler implements KeyListener {
         pressedMap.put(KeyEvent.VK_S, false);
         pressedMap.put(KeyEvent.VK_D, false);
         pressedMap.put(KeyEvent.VK_SHIFT, false);
+
         pressedMap.put(KeyEvent.VK_I, false);
         pressedMap.put(KeyEvent.VK_E, false);
         pressedMap.put(KeyEvent.VK_P, false);
+        pressedMap.put(KeyEvent.VK_O, false);
         
     }
 
@@ -60,7 +62,6 @@ public class KeyHandler implements KeyListener {
             if (!pressedMap.get(code)) {
                 typedMap.put(code, true); 
             }
-            ePressed = true;
         }
     }
 
@@ -71,5 +72,11 @@ public class KeyHandler implements KeyListener {
             return true;
         }
         return false;
+    }
+
+    public void consumeAllTyped() {
+        for (int code: typedMap.keySet()) {
+            consumeTyped(code);
+        }
     }
 }

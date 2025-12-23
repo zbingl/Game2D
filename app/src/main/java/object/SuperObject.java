@@ -50,4 +50,9 @@ public abstract class SuperObject {
     public String toString() {
         return name;
     }
+
+    public void relocate(int x, int y) {
+        worldX = x;
+        worldY = y;
+    }
 }

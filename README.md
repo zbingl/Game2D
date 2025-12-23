@@ -27,10 +27,10 @@ Map editor : [Tiled](https://www.mapeditor.org/)
 ~~gradle~~\
 ~~render object first if player is behind object~~\
 ~~only rendering objects that are on screen~~\
+~~inventory~~
 HUD and UI\
 table interaction (adding and removing objects)\
-placing and removing objects\
-inventory
+placing and removing objects
 
 ### Low priority
 add second "player walking sideways" sprite\
@@ -38,4 +38,14 @@ house sprite (add more details)\
 objects for house and garage\
 Implement JSON map files for Tiled compatibility\
 new textures and tiles
+
+### Bugs
+Player sometimes dissapears when clipping objects\
+Player can get stuck when placing objects
+
+### Screenshots
+![alt text](app/src/main/resources/screenshots/mainroom.jpg)
+![alt text](app/src/main/resources/screenshots/bedroom.jpg)
+![alt text](app/src/main/resources/screenshots/outdoors.jpg)
+
 

@@ -6,17 +6,18 @@ import object.SuperObject;
 import tile.TileManager;
 
 public class PlayerInventory {
-    ArrayList<SuperObject> objectList;
     GamePanel gp;
+    TileManager tilemanager;
+    ArrayList<SuperObject> objectList = new ArrayList<SuperObject>();
 
     public PlayerInventory(GamePanel gp) {
-        this.objectList = new ArrayList<SuperObject>();
         this.gp = gp;
+        this.tilemanager = gp.tileM;
     }
 
     public void pickup(SuperObject obj) {
         if (objectList.size() < 8) {
-            TileManager tilemanager = gp.tileM;
+            
             ArrayList<SuperObject> worldObjs = tilemanager.mapList.get(tilemanager.currMapName).objectList;
 
             objectList.add(obj);
@@ -24,8 +25,27 @@ public class PlayerInventory {
         }
     }
 
-    public void place(SuperObject obj) {
+    public void place(SuperObject obj, int x, int y) {
+        
+        ArrayList<SuperObject> worldObjs = tilemanager.mapList.get(tilemanager.currMapName).objectList;
 
+        obj.relocate(x, y);
+
+        worldObjs.add(obj);
+        objectList.remove(obj);
+
+    }
+
+    public SuperObject getFirstObject() {
+        return objectList.get(0);
+    }
+
+    public int getNbrOfObjectsStored() {
+        return objectList.size();
+    }
+
+    public ArrayList<SuperObject> getInventory() {
+        return objectList;
     }
 
 }
