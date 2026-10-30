@@ -49,3 +49,6 @@ Player can get stuck when placing objects
 ![alt text](app/src/main/resources/screenshots/outdoors.jpg)
 
 
+Hej ensar
+
+
